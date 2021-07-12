@@ -3,94 +3,73 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <title>🔥 Fitlit</title>
   </head>
   <body>
    <section class="landing-page">
     <section class="logo">
-      <section>
-        <img>
-        <h2>fitlit</h2>
-      </section>
-      <section class="dashboard">
-        <img>
-        <h1>Welcome, Name!</h1>
-        <h2> 7.11.2021</h2>
-        <div>
-          <button class="hydration"></button>
-          <button class="sleep"></button>
-          <button class="activity"></button>
-        </div>
-        <p>Step Goal Comparison</p>
-        <button class="user-info"></button>
-      </section>
+      <h2 class="fit-logo">
+        <img class="logo-img" src="./images/PngItem_311075.png" alt="fitlit logo">
+        fitlit
+      </h2>
+    </section>
+    <section class="dashboard">
+      <img class="icon" src="./images/user.png" alt="avatar placeholder">
+      <h1>Welcome, Name!</h1>
+      <h2> 7.11.2021</h2>
+      <div>
+        <button class="hydration"></button>
+        <button class="sleep"></button>
+        <button class="activity"></button>
+      </div>
+      <p>Step Goal Comparison</p>
+      <button class="user-info"></button>
     </section>
    </section>
 
    <section class="hydration hidden">
-    <section class="logo">
-      <img>
-      <h2>fitlit</h2>
-    </section>
-    <section class="data-display">
-      <h1>Hydration</h1>
-      <img>
-      <div class="bar-graph"></div>
-    </section>
+    <h1>Hydration</h1>
+    <img>
+    <div class="bar-graph"></div>
    </section>
 
    <section class="sleep hidden">
-    <section class="logo">
-      <img>
-      <h2>fitlit</h2>
-    </section>
-    <section class="data-display">
-      <h1>Sleep</h1>
-      <img>
-      <div class="bar-graph"></div>
-      <h3>All Time Averages</h3>
-      <div>
-        <p>Sleep Quality: </p>
-        <p>Sleep Hours: </p>
-      </div>
-    </section>
+    <h1>Sleep</h1>
+    <img>
+    <div class="bar-graph"></div>
+    <h3>All Time Averages</h3>
+    <div>
+      <p>Sleep Quality: </p>
+      <p>Sleep Hours: </p>
+    </div>
    </section>
 
    <section class="activity hidden">
-    <section class="logo">
-      <img>
-      <h2>fitlit</h2>
-    </section>
-    <section class="data-display">
-      <h1>Activity</h1>
-      <img>
-      <div class="bar-graph"></div>
-      <div class="activity-buttons">
-        <button>Steps</button>
-        <button>Minutes</button>
-        <button>Stairs</button>
-      </div>
-      <p>Your overall compared to other users</p>
-    </section>
+    <h1>Activity</h1>
+    <img>
+    <div class="bar-graph"></div>
+    <div class="activity-buttons">
+      <button>Steps</button>
+      <button>Minutes</button>
+      <button>Stairs</button>
+    </div>
+    <p>Your overall compared to other users</p>
    </section>
 
    <section class="user-info hidden" >
-    <section class="logo">
-      <img>
-      <h2>fitlit</h2>
-    </section>
-    <section>
-      <h1>User Info</h1>
-      <img class="user-icon">
-      <ul class="user-details">
-        <li>Name:</li>
-        <li>Address:</li>
-        <li>Email:</li>
-        <li>Stride Length:</li>
-        <li>Daily Steps Goal:</li>
-        <li>Your Friends:</li>
-      </ul>
-    </section>
+    <h1>User Info</h1>
+    <img class="user-icon">
+    <ul class="user-details">
+      <li>Name:</li>
+      <li>Address:</li>
+      <li>Email:</li>
+      <li>Stride Length:</li>
+      <li>Daily Steps Goal:</li>
+      <li>Your Friends:</li>
+    </ul>
    </section>
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->

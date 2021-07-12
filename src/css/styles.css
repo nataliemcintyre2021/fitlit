@@ -1,5 +1,55 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
   height: 100%;
+  width: 100%;
+  background: #E3E9F3;
+}
+
+
+.logo {
+  display: flex;
+  justify-content: flex-end;
+  border: 3px solid red;
+  padding: 20px;
+  height: 10vh;
+}
+
+.logo-img {
+  height: 5vh;
+  width: 5vh;
+  border: 3px solid blue;
+  padding: 2px;
+}
+
+.fit-logo {
+  margin: 10px;
+}
+
+.dashboard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 2px solid black;
+  height: 90vh;
+}
+
+.icon {
+  height: 12vh;
+  width: 12vh;
+}
+
+.hidden {
+  display: none;
 }
