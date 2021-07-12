@@ -8,7 +8,9 @@
 
 * {
   font-family: 'Ubuntu', sans-serif;
+  /* border: 3px solid purple; */
 }
+
 
 body, html {
   height: 100%;
@@ -20,7 +22,6 @@ body, html {
 .logo {
   display: flex;
   justify-content: flex-end;
-  border: 3px solid red;
   padding: 20px;
   height: 10vh;
 }
@@ -28,7 +29,6 @@ body, html {
 .logo-img {
   height: 5vh;
   width: 5vh;
-  border: 3px solid blue;
   padding: 2px;
 }
 
@@ -40,15 +40,54 @@ body, html {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-evenly;
-  border: 2px solid black;
   height: 90vh;
 }
 
 .icon {
   height: 12vh;
   width: 12vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
+.greeting {
+  font-size: 4vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.date {
+  font-size: 2vh;
+  margin-top: 35px;
+}
+
+.fitness-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 50vh;
+  margin: 5px;
+}
+
+.fitness-info {
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+}
+
+.user-info {
+  height: 3vh;
+  width: 14vh;
+  margin-top: 25px;
+  border-radius: 20%;
+}
+/* button {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+
+} */
 
 .hidden {
   display: none;
