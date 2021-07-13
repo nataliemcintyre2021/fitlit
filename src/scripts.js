@@ -29,6 +29,12 @@ const flameLogo = document.getElementById('flame-logo');
 const userInfoBtn = document.getElementById('user-info-btn');
 const landingPage = document.getElementById('main-dashboard');
 const userInfoPage = document.getElementById('user-info-page');
+const userNameInfo = document.getElementById('name');
+const userAddressInfo = document.getElementById('address');
+const userEmailInfo = document.getElementById('email');
+const userStrideLengthInfo = document.getElementById('stride-length');
+const userStepGoalInfo = document.getElementById('step-goal');
+const userFriendsInfo = document.getElementById('your-friends');
 
 
 //global variable
@@ -63,20 +69,31 @@ function displayUserWelcome() {
 };
 
 function displayStepsComparison() {
-  stepComparison.innerText = `Your step goal is ${currentUser.dailyStepGoal}, compared to your
-  fellow users' average goal of 6667`;
+  stepComparison.innerText = 
+  `Your step goal is ${currentUser.dailyStepGoal}, compared to your
+  fellow users' average goal of 6667!`;
 }
 
 function displayUserInformationPage() {
   toggleView(userInfoPage, landingPage);
-
+  loadUserInformation();
 }
 
 function displayMainLandingPage() {
-  
+  userInfoPage.classList.add('hidden');
+  landingPage.classList.remove('hidden');
 }
 
 function toggleView(show, hide) {
   show.classList.remove('hidden');
   hide.classList.add('hidden');
+}
+
+function loadUserInformation() {
+  userNameInfo.innerText = `Name: ${currentUser.name}`;
+  userAddressInfo.innerText = `Address: ${currentUser.address}`;
+  userEmailInfo.innerText = `Email: ${currentUser.email}`;
+  userStrideLengthInfo.innerText = `Stride Length: ${currentUser.strideLength}`;
+  userStepGoalInfo.innerText = `Step Goal: ${currentUser.dailyStepGoal}`;
+  userFriendsInfo.innerText = 'Friends: will display here!';
 }
