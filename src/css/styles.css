@@ -70,10 +70,41 @@ body, html {
   margin: 5px;
 }
 
-.fitness-info {
+.hydration-info {
   border-radius: 50%;
   height: 15vh;
   width: 15vh;
+  background-color: #2DA1FA;
+  border-color: #2DA1FA;
+  box-shadow: 3px 5px 5px #7D7D7D;
+}
+
+.sleep-info {
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+  background-color: #41CBDB;
+  border-color: #41CBDB;
+  box-shadow: 3px 5px 5px #7D7D7D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sleep-image {
+  height: 4vh;
+  width: 4vh;
+  margin: 8px;
+}
+
+.activity-info {
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+  background-color: #46D4B6;
+  border-color: #46D4B6;
+  box-shadow: 3px 5px 5px #7D7D7D;
 }
 
 .user-info {

@@ -8,6 +8,7 @@ import './css/styles.css';
 import './images/turing-logo.png';
 import './images/PngItem_311075.png';
 import './images/user.png';
+import './images/moon.png';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
