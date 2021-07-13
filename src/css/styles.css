@@ -34,6 +34,7 @@ body, html {
 
 .fit-logo {
   margin: 10px;
+  cursor: pointer;
 }
 
 /* ~~ Landing Dashboard ~~ */
@@ -206,7 +207,31 @@ body, html {
 
 /* ~~ User Information ~~ */
 
+.user-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+}
 
+.info-page-header {
+  font-size: 7vh;
+  background: -webkit-linear-gradient(#2DA1FA, #41CBDB, #46D4B6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 50px;
+}
+
+.user-details {
+  list-style-type: none;
+  height: 50vh;
+  width: 50vh;
+}
+
+li {
+  margin: 30px;
+  font-size: 3vh;
+}
 
 .hidden {
   display: none;
