@@ -185,7 +185,7 @@ body, html {
 
 .moon {
   height: 6vh;
-  width: 6vh;
+  width: 6vw;
 }
 
 .sleep-averages {
@@ -203,6 +203,45 @@ body, html {
 }
 
 /* ~~ Activity Dashboard ~~ */
+.activity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+}
+
+.activity-header {
+  font-size: 6vh;
+  color: #46D4B6;
+  margin: 20px;
+}
+
+.footsteps {
+  height: 6vh;
+  width: 6vw;
+}
+
+.activity-btns {
+  height: 7vh;
+  width: 9vw;
+  margin: 20px;
+  border-radius: 5px;
+  border: 2px solid #46D4B6;
+  background: #E3E9F3;
+  color: #46D4B6;
+  font-size: 2.5vh;
+  cursor: pointer;
+}
+
+.activity-btns:hover {
+  border: #E3E9F3;
+  color: #E3E9F3;
+  background: #46D4B6;
+}
+
+.activity-compare {
+  font-size: 2vh;
+}
 
 
 /* ~~ User Information ~~ */
