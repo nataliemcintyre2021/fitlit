@@ -34,7 +34,10 @@ body, html {
 
 .fit-logo {
   margin: 10px;
+  cursor: pointer;
 }
+
+/* ~~ Landing Dashboard ~~ */
 
 .dashboard {
   display: flex;
@@ -75,8 +78,13 @@ body, html {
   height: 15vh;
   width: 15vh;
   background-color: #2DA1FA;
-  border-color: #2DA1FA;
-  box-shadow: 3px 5px 5px #7D7D7D;
+  border: none;
+  box-shadow: 4px 6px 6px #7D7D7D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .sleep-info {
@@ -84,15 +92,18 @@ body, html {
   height: 15vh;
   width: 15vh;
   background-color: #41CBDB;
-  border-color: #41CBDB;
-  box-shadow: 3px 5px 5px #7D7D7D;
+  border: none;
+  box-shadow: 4px 6px 6px #7D7D7D;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.sleep-image {
+.sleep-image,
+.hydration-image,
+.activity-image {
   height: 4vh;
   width: 4vh;
   margin: 8px;
@@ -103,22 +114,163 @@ body, html {
   height: 15vh;
   width: 15vh;
   background-color: #46D4B6;
-  border-color: #46D4B6;
-  box-shadow: 3px 5px 5px #7D7D7D;
+  border: none;
+  box-shadow: 4px 6px 6px #7D7D7D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sleep-info:hover,
+.hydration-info:hover,
+.activity-info:hover {
+  box-shadow: -4px -6px 6px #7D7D7D;
+  /* background: white; */
 }
 
 .user-info {
   height: 3vh;
-  width: 14vh;
+  width: 16vh;
   margin-top: 25px;
   border-radius: 20%;
+  background: #E3E9F3;
+  font-size: 16px;
+  border: 2px solid #2DA1FA;
+  color: #2DA1FA;
+  cursor: pointer;
 }
-/* button {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
 
-} */
+.user-info:hover {
+  border: #E3E9F3;
+  color: #E3E9F3;
+  background: #2DA1FA;
+}
+
+/* ~~ Hydration Dashboard ~~ */
+
+.hydration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+}
+
+.hydration-heading {
+  font-size: 6vh;
+  color: #2DA1FA;
+  margin: 20px;
+}
+
+.waterdrop {
+  height: 6vh;
+  width: 6vh;
+}
+
+/* ~~ Sleep Dashboard ~~ */
+
+.sleep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+}
+
+.sleep-header {
+  font-size: 6vh;
+  color: #41CBDB;
+  margin: 20px;
+}
+
+.moon {
+  height: 6vh;
+  width: 6vw;
+}
+
+.sleep-averages {
+  font-size: 2vh;
+  margin-bottom: 20px;
+}
+
+.sleep-avg-data {
+  display: flex;
+}
+
+.sleep-quality,
+.sleep-hours {
+  margin: 0px 20px;
+}
+
+/* ~~ Activity Dashboard ~~ */
+.activity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+}
+
+.activity-header {
+  font-size: 6vh;
+  color: #46D4B6;
+  margin: 20px;
+}
+
+.footsteps {
+  height: 6vh;
+  width: 6vw;
+}
+
+.activity-btns {
+  height: 7vh;
+  width: 9vw;
+  margin: 20px;
+  border-radius: 5px;
+  border: 2px solid #46D4B6;
+  background: #E3E9F3;
+  color: #46D4B6;
+  font-size: 2.5vh;
+  cursor: pointer;
+}
+
+.activity-btns:hover {
+  border: #E3E9F3;
+  color: #E3E9F3;
+  background: #46D4B6;
+}
+
+.activity-compare {
+  font-size: 2vh;
+}
+
+
+/* ~~ User Information ~~ */
+
+.user-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+}
+
+.info-page-header {
+  font-size: 7vh;
+  background: -webkit-linear-gradient(#2DA1FA, #41CBDB, #46D4B6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 50px;
+}
+
+.user-details {
+  list-style-type: none;
+  height: 50vh;
+  width: 50vh;
+}
+
+li {
+  margin: 30px;
+  font-size: 3vh;
+}
 
 .hidden {
   display: none;
