@@ -11,6 +11,7 @@ import './images/user.png';
 import './images/moon.png';
 import './images/water.png';
 import './images/footprints.png';
+import './images/flame.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 

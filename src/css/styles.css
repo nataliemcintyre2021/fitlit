@@ -36,6 +36,8 @@ body, html {
   margin: 10px;
 }
 
+/* ~~ Landing Dashboard ~~ */
+
 .dashboard {
   display: flex;
   align-items: center;
@@ -76,13 +78,12 @@ body, html {
   width: 15vh;
   background-color: #2DA1FA;
   border: none;
-  box-shadow: 3px 5px 5px #7D7D7D;
+  box-shadow: 4px 6px 6px #7D7D7D;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
 }
 
 .sleep-info {
@@ -91,13 +92,12 @@ body, html {
   width: 15vh;
   background-color: #41CBDB;
   border: none;
-  box-shadow: 3px 5px 5px #7D7D7D;
+  box-shadow: 4px 6px 6px #7D7D7D;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
 }
 
 .sleep-image,
@@ -114,13 +114,19 @@ body, html {
   width: 15vh;
   background-color: #46D4B6;
   border: none;
-  box-shadow: 3px 5px 5px #7D7D7D;
+  box-shadow: 4px 6px 6px #7D7D7D;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
 
+.sleep-info:hover,
+.hydration-info:hover,
+.activity-info:hover {
+  box-shadow: -4px -6px 6px #7D7D7D;
+  /* background: white; */
 }
 
 .user-info {
@@ -141,7 +147,25 @@ body, html {
   background: #2DA1FA;
 }
 
+/* ~~ Hydration Dashboard ~~ */
 
+.hydration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+}
+
+.hydration-heading {
+  font-size: 6vh;
+  color: #2DA1FA;
+  margin: 20px;
+}
+
+.waterdrop {
+  height: 6vh;
+  width: 6vh;
+}
 
 
 .hidden {
