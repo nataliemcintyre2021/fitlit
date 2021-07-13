@@ -75,8 +75,14 @@ body, html {
   height: 15vh;
   width: 15vh;
   background-color: #2DA1FA;
-  border-color: #2DA1FA;
+  border: none;
   box-shadow: 3px 5px 5px #7D7D7D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
 }
 
 .sleep-info {
@@ -84,15 +90,19 @@ body, html {
   height: 15vh;
   width: 15vh;
   background-color: #41CBDB;
-  border-color: #41CBDB;
+  border: none;
   box-shadow: 3px 5px 5px #7D7D7D;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+
 }
 
-.sleep-image {
+.sleep-image,
+.hydration-image,
+.activity-image {
   height: 4vh;
   width: 4vh;
   margin: 8px;
@@ -103,22 +113,36 @@ body, html {
   height: 15vh;
   width: 15vh;
   background-color: #46D4B6;
-  border-color: #46D4B6;
+  border: none;
   box-shadow: 3px 5px 5px #7D7D7D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
 }
 
 .user-info {
   height: 3vh;
-  width: 14vh;
+  width: 16vh;
   margin-top: 25px;
   border-radius: 20%;
+  background: #E3E9F3;
+  font-size: 16px;
+  border: 2px solid #2DA1FA;
+  color: #2DA1FA;
+  cursor: pointer;
 }
-/* button {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
 
-} */
+.user-info:hover {
+  border: #E3E9F3;
+  color: #E3E9F3;
+  background: #2DA1FA;
+}
+
+
+
 
 .hidden {
   display: none;

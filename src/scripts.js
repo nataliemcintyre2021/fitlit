@@ -9,6 +9,8 @@ import './images/turing-logo.png';
 import './images/PngItem_311075.png';
 import './images/user.png';
 import './images/moon.png';
+import './images/water.png';
+import './images/footprints.png';
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
