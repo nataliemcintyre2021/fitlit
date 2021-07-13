@@ -1,5 +1,125 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+  /* border: 3px solid purple; */
+}
+
+
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
   height: 100%;
+  width: 100%;
+  background: #E3E9F3;
+}
+
+
+.logo {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  height: 10vh;
+}
+
+.logo-img {
+  height: 5vh;
+  width: 5vh;
+  padding: 2px;
+}
+
+.fit-logo {
+  margin: 10px;
+}
+
+.dashboard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
+}
+
+.icon {
+  height: 12vh;
+  width: 12vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.greeting {
+  font-size: 4vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.date {
+  font-size: 2vh;
+  margin-top: 35px;
+}
+
+.fitness-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 50vh;
+  margin: 5px;
+}
+
+.hydration-info {
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+  background-color: #2DA1FA;
+  border-color: #2DA1FA;
+  box-shadow: 3px 5px 5px #7D7D7D;
+}
+
+.sleep-info {
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+  background-color: #41CBDB;
+  border-color: #41CBDB;
+  box-shadow: 3px 5px 5px #7D7D7D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sleep-image {
+  height: 4vh;
+  width: 4vh;
+  margin: 8px;
+}
+
+.activity-info {
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+  background-color: #46D4B6;
+  border-color: #46D4B6;
+  box-shadow: 3px 5px 5px #7D7D7D;
+}
+
+.user-info {
+  height: 3vh;
+  width: 14vh;
+  margin-top: 25px;
+  border-radius: 20%;
+}
+/* button {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+
+} */
+
+.hidden {
+  display: none;
 }
