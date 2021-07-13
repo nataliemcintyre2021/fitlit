@@ -3,18 +3,21 @@ class UserRepository {
     this.data = theData
   }
 
-  getDataById() {
-
+  getDataById(userId) {
+    const user = this.data.find(user => userId === user["id"])
+    return user;
   }
+    //pass in userId as parameter in method
+    //iterate through the data array using find
+    //this will locate the unique user
+
 
   getAllUserAverageStepGoal() {
-    this.data.reduce((acc, user) => {
-      console.log(user["dailyStepGoal"])
-      console.log(this.data.length)
-      console.log(acc)
+    const averageSteps = this.data.reduce((acc, user) => {
       acc += user["dailyStepGoal"]
       return acc;
-    }, 0) / this.data.length;
+      }, 0) / this.data.length;
+      return Math.round(averageSteps);
   }
 }
 

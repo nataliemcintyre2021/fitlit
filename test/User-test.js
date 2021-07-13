@@ -22,7 +22,6 @@ describe('User', () => {
         ]
       });
       expect(user1).to.be.an.instanceof(User);
-      console.log(user1);
   })
 
 })
