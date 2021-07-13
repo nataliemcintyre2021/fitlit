@@ -167,6 +167,46 @@ body, html {
   width: 6vh;
 }
 
+/* ~~ Sleep Dashboard ~~ */
+
+.sleep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+}
+
+.sleep-header {
+  font-size: 6vh;
+  color: #41CBDB;
+  margin: 20px;
+}
+
+.moon {
+  height: 6vh;
+  width: 6vh;
+}
+
+.sleep-averages {
+  font-size: 2vh;
+  margin-bottom: 20px;
+}
+
+.sleep-avg-data {
+  display: flex;
+}
+
+.sleep-quality,
+.sleep-hours {
+  margin: 0px 20px;
+}
+
+/* ~~ Activity Dashboard ~~ */
+
+
+/* ~~ User Information ~~ */
+
+
 
 .hidden {
   display: none;
