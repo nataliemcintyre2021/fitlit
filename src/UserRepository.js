@@ -7,10 +7,6 @@ class UserRepository {
     const user = this.data.find(user => userId === user["id"])
     return user;
   }
-    //pass in userId as parameter in method
-    //iterate through the data array using find
-    //this will locate the unique user
-
 
   getAllUserAverageStepGoal() {
     const averageSteps = this.data.reduce((acc, user) => {

@@ -10,7 +10,6 @@ class User {
   }
 
 
-
   returnUserFirstName() {
     const firstName = this.name.split(" ");
     return firstName[0];
