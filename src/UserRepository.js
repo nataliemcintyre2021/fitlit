@@ -9,8 +9,12 @@ class UserRepository {
 
   getAllUserAverageStepGoal() {
     this.data.reduce((acc, user) => {
-      return acc + user["dailyStepGoal"]
-    }, 0)/this.data.length;
+      console.log(user["dailyStepGoal"])
+      console.log(this.data.length)
+      console.log(acc)
+      acc += user["dailyStepGoal"]
+      return acc;
+    }, 0) / this.data.length;
   }
 }
 
