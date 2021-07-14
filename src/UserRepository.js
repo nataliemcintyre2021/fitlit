@@ -12,8 +12,8 @@ class UserRepository {
     const averageSteps = this.data.reduce((acc, user) => {
       acc += user["dailyStepGoal"]
       return acc;
-      }, 0) / this.data.length;
-      return Math.round(averageSteps);
+    }, 0) / this.data.length;
+    return Math.round(averageSteps);
   }
 }
 
