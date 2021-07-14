@@ -79,7 +79,7 @@ function displayUserWelcome() {
 };
 
 function displayStepsComparison() {
-  stepComparison.innerText = 
+  stepComparison.innerText =
   `Your step goal is ${currentUser.dailyStepGoal}, compared to your
   fellow users' average goal of 6667!`;
 }
