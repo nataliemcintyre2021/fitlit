@@ -13,7 +13,7 @@ import './images/water.png';
 import './images/footprints.png';
 import './images/flame.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+// console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
@@ -26,8 +26,15 @@ import User from './User';
 const userWelcome = document.getElementById('user-welcome');
 const stepComparison = document.getElementById('step-comparison');
 const flameLogo = document.getElementById('flame-logo');
-const userInfoBtn = document.getElementById('user-info-btn');
 const landingPage = document.getElementById('main-dashboard');
+const hydrationBtn = document.getElementById('ounce-btn');
+const hydrationInfoPage = document.getElementById('hydration-info-page');
+const sleepBtn = document.getElementById('sleep-btn');
+const sleepInfoPage = document.getElementById('sleep-info-page');
+//started on assigning the sleep button information to toggle to that page
+
+
+const userInfoBtn = document.getElementById('user-info-btn');
 const userInfoPage = document.getElementById('user-info-page');
 const userNameInfo = document.getElementById('name');
 const userAddressInfo = document.getElementById('address');
@@ -44,11 +51,13 @@ let currentUser;
 //event listeners
 window.addEventListener('load', displayUserWelcome);
 userInfoBtn.addEventListener('click', displayUserInformationPage);
-flameLogo.addEventListener('click', displayMainLandingPage)
+flameLogo.addEventListener('click', displayMainLandingPage);
+hydrationBtn.addEventListener('click', displayHydrationInformationPage);
+
 
 //functions
 function displayUserWelcome() {
-  let newUser = {
+  let newUserData = [{
     "id": 43,
     "name": "Alfonso Sporer",
     "address": "584 Mayert Greens, West Arden SC 97033",
@@ -61,8 +70,9 @@ function displayUserWelcome() {
       43,
       33
     ]
-  }
-
+  }]
+  let userRepo = new UserRepository(newUserData);
+  let newUser = userRepo.getDataById(43);
   currentUser = new User(newUser);
   userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
   displayStepsComparison();
@@ -81,7 +91,13 @@ function displayUserInformationPage() {
 
 function displayMainLandingPage() {
   userInfoPage.classList.add('hidden');
+  hydrationInfoPage.classList.add('hidden');
   landingPage.classList.remove('hidden');
+}
+
+function displayHydrationInformationPage() {
+  toggleView(hydrationInfoPage, landingPage);
+//include the other necessary information here
 }
 
 function toggleView(show, hide) {
