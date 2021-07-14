@@ -20,7 +20,8 @@ import './images/flame.png'
 import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
-
+import apiCalls from './apiCalls';
+console.log(apiCalls.getData())
 
 //query selectors
 const userWelcome = document.getElementById('user-welcome');
