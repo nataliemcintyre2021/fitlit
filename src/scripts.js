@@ -1,23 +1,13 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
 import './images/PngItem_311075.png';
 import './images/user.png';
 import './images/moon.png';
 import './images/water.png';
 import './images/footprints.png';
-import './images/flame.png'
-
-// console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
-
-import userData from './data/users';
+import './images/flame.png';
 import UserRepository from './UserRepository';
 import User from './User';
 import {getUserData, getSleepData, getActivityData, getHydrationData} from './apiCalls';
@@ -29,15 +19,19 @@ const userWelcome = document.getElementById('user-welcome');
 const stepComparison = document.getElementById('step-comparison');
 const flameLogo = document.getElementById('flame-logo');
 const landingPage = document.getElementById('main-dashboard');
+
 const hydrationBtn = document.getElementById('ounce-btn');
 const hydrationInfoPage = document.getElementById('hydration-info-page');
 const hydrationChart = document.getElementById('hydration-chart');
+
 const sleepBtn = document.getElementById('sleep-btn');
 const sleepInfoPage = document.getElementById('sleep-info-page');
 const sleepChart = document.getElementById('snooze-chart');
+
 const activityBtn = document.getElementById('activity-btn');
 const activityInfoPage = document.getElementById('activity-info-page');
 const activityChart = document.getElementById('activity-chart');
+
 const userInfoBtn = document.getElementById('user-info-btn');
 const userInfoPage = document.getElementById('user-info-page');
 const userNameInfo = document.getElementById('name');
@@ -51,7 +45,7 @@ const userFriendsInfo = document.getElementById('your-friends');
 //global variable
 let currentUser;
 let allUserData = [];
-let allHydrationData =[];
+let allHydrationData = [];
 let allSleepData = [];
 let allActivityData = [];
 
@@ -69,7 +63,7 @@ activityBtn.addEventListener('click', displayActivityInformationPage);
 function fetchUserData() {
   Promise.all([getUserData(), getSleepData(), getActivityData(), getHydrationData()])
     .then(values => parseValues(values)) 
-};
+}
 
 function parseValues(data) {
   data[0].userData.forEach(user => allUserData.push(user));
@@ -156,20 +150,10 @@ function displaySleepChart() {
         label: '# of Votes',
         data: [12, 19, 3, 5, 2, 3],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
+          'rgba(255, 99, 132, 0.2)',          
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'rgba(255, 99, 132, 1)',         
         ],
         borderWidth: 1
       }]
@@ -199,19 +183,9 @@ function displayActivityChart() {
         data: [12, 19, 3, 5, 2, 3],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
         ],
         borderWidth: 1
       }]
