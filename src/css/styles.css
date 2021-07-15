@@ -168,6 +168,11 @@ body, html {
   width: 6vh;
 }
 
+.water-chart {
+  height: 40vh;
+  width: 40vw;
+}
+
 /* ~~ Sleep Dashboard ~~ */
 
 .sleep {

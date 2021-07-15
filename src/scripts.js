@@ -21,6 +21,7 @@ import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
 import {getUserData, getSleepData, getActivityData, getHydrationData} from './apiCalls';
+import Chart from 'chart.js/auto';
 
 
 //query selectors
@@ -30,11 +31,14 @@ const flameLogo = document.getElementById('flame-logo');
 const landingPage = document.getElementById('main-dashboard');
 const hydrationBtn = document.getElementById('ounce-btn');
 const hydrationInfoPage = document.getElementById('hydration-info-page');
+const hydrationChart = document.getElementById('hydration-chart');
 const sleepBtn = document.getElementById('sleep-btn');
 const sleepInfoPage = document.getElementById('sleep-info-page');
+const sleepChart = document.getElementById('sleep-chart');
+
 //started on assigning the sleep button information to toggle to that page
 
-
+const activityChart = document.getElementById('activity-chart');
 const userInfoBtn = document.getElementById('user-info-btn');
 const userInfoPage = document.getElementById('user-info-page');
 const userNameInfo = document.getElementById('name');
@@ -62,12 +66,8 @@ hydrationBtn.addEventListener('click', displayHydrationInformationPage);
 
 //functions
 function fetchUserData() {
-  Promise.all([getUserData(), getSleepData(), getActivityData(), getHydrationData()]).then(values => parseValues(values))
-  // let userRepo = new UserRepository(newUserData);
-  // let newUser = userRepo.getDataById(43);
-  // currentUser = new User(newUser);
-  // userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
-  // displayStepsComparison();
+  Promise.all([getUserData(), getSleepData(), getActivityData(), getHydrationData()])
+    .then(values => parseValues(values)) 
 };
 
 function parseValues(data) {
@@ -109,7 +109,44 @@ function displayMainLandingPage() {
 
 function displayHydrationInformationPage() {
   toggleView(hydrationInfoPage, landingPage);
-//include the other necessary information here
+  displayHydrationChart();
+}
+
+function displayHydrationChart() {
+  var myChart = new Chart(hydrationChart, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Pumpkin'],
+      datasets: [{
+        label: 'Number of Ounces',
+        data: [48, 50, 35, 65, 90, 54, 36],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 }
 
 function toggleView(show, hide) {
