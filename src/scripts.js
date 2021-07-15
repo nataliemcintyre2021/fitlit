@@ -34,10 +34,9 @@ const hydrationInfoPage = document.getElementById('hydration-info-page');
 const hydrationChart = document.getElementById('hydration-chart');
 const sleepBtn = document.getElementById('sleep-btn');
 const sleepInfoPage = document.getElementById('sleep-info-page');
-const sleepChart = document.getElementById('sleepy-chart');
+const sleepChart = document.getElementById('snooze-chart');
 const activityBtn = document.getElementById('activity-btn');
-
-
+const activityInfoPage = document.getElementById('activity-info-page');
 const activityChart = document.getElementById('activity-chart');
 const userInfoBtn = document.getElementById('user-info-btn');
 const userInfoPage = document.getElementById('user-info-page');
@@ -62,7 +61,8 @@ window.addEventListener('load', fetchUserData);
 userInfoBtn.addEventListener('click', displayUserInformationPage);
 flameLogo.addEventListener('click', displayMainLandingPage);
 hydrationBtn.addEventListener('click', displayHydrationInformationPage);
-sleepBtn.addEventListener('click', displaySleepInformationPage)
+sleepBtn.addEventListener('click', displaySleepInformationPage);
+activityBtn.addEventListener('click', displayActivityInformationPage);
 
 
 //functions
@@ -105,6 +105,8 @@ function displayUserInformationPage() {
 function displayMainLandingPage() {
   userInfoPage.classList.add('hidden');
   hydrationInfoPage.classList.add('hidden');
+  sleepInfoPage.classList.add('hidden');
+  activityInfoPage.classList.add('hidden');
   landingPage.classList.remove('hidden');
 }
 
@@ -147,6 +149,48 @@ function displaySleepInformationPage() {
 
 function displaySleepChart() {
   var mySleepChart = new Chart(sleepChart, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+function displayActivityInformationPage() {
+  toggleView(activityInfoPage, landingPage);
+  displayActivityChart();
+}
+
+function displayActivityChart() {
+  var myStepsChart = new Chart(activityChart, {
     type: 'bar',
     data: {
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],

@@ -50,7 +50,7 @@
     <h1 class="sleep-header">Sleep</h1>
     <img class="sleep-image moon" src="./images/moon.png" alt="sleep icon">
     <div class="sleep-chart">
-      <canvas id="sleepy-chart"></canvas>
+      <canvas id="snooze-chart"></canvas>
     </div>    
     <h3 class="sleep-averages">All Time Averages</h3>
     <div class="sleep-avg-data">
@@ -59,10 +59,12 @@
     </div>
    </section>
 
-   <section class="activity hidden">
+   <section class="activity hidden" id="activity-info-page">
     <h1 class="activity-header">Activity</h1>
     <img class="activity-image footsteps" src="./images/footprints.png" alt="steps icon">
-    <canvas id="activity-chart" width="400" height="400"></canvas>
+    <div class="steps-chart">
+      <canvas id="activity-chart"></canvas>
+    </div>
     <div class="activity-buttons">
       <button class="activity-btns">Steps</button>
       <button class="activity-btns">Minutes</button>

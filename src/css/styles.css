@@ -169,7 +169,8 @@ body, html {
 }
 
 .water-chart,
-.sleep-chart {
+.sleep-chart,
+.steps-chart {
   height: 50vh;
   width: 50vw;
   margin-top: 40px;
