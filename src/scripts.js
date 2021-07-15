@@ -20,8 +20,8 @@ import './images/flame.png'
 import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
-import apiCalls from './apiCalls';
-console.log(apiCalls.getData())
+import {getUserData, getSleepData, getActivityData, getHydrationData} from './apiCalls';
+
 
 //query selectors
 const userWelcome = document.getElementById('user-welcome');
@@ -47,42 +47,53 @@ const userFriendsInfo = document.getElementById('your-friends');
 
 //global variable
 let currentUser;
+let allUserData = [];
+let allHydrationData =[];
+let allSleepData = [];
+let allActivityData = [];
 
 
 //event listeners
-window.addEventListener('load', displayUserWelcome);
+window.addEventListener('load', fetchUserData);
 userInfoBtn.addEventListener('click', displayUserInformationPage);
 flameLogo.addEventListener('click', displayMainLandingPage);
 hydrationBtn.addEventListener('click', displayHydrationInformationPage);
 
 
 //functions
-function displayUserWelcome() {
-  let newUserData = [{
-    "id": 43,
-    "name": "Alfonso Sporer",
-    "address": "584 Mayert Greens, West Arden SC 97033",
-    "email": "Jadon_Borer@gmail.com",
-    "strideLength": 4,
-    "dailyStepGoal": 5000,
-    "friends": [
-      2,
-      19,
-      43,
-      33
-    ]
-  }]
-  let userRepo = new UserRepository(newUserData);
-  let newUser = userRepo.getDataById(43);
-  currentUser = new User(newUser);
-  userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
-  displayStepsComparison();
+function fetchUserData() {
+  Promise.all([getUserData(), getSleepData(), getActivityData(), getHydrationData()]).then(values => parseValues(values))
+  // let userRepo = new UserRepository(newUserData);
+  // let newUser = userRepo.getDataById(43);
+  // currentUser = new User(newUser);
+  // userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
+  // displayStepsComparison();
 };
 
-function displayStepsComparison() {
+function parseValues(data) {
+  data[0].userData.forEach(user => allUserData.push(user));
+  data[1].sleepData.forEach(user => allSleepData.push(user));
+  data[2].activityData.forEach(user => allActivityData.push(user));
+  data[3].hydrationData.forEach(user => allHydrationData.push(user));
+  createNewUser();
+}
+
+function createNewUser() {
+  let userRepo = new UserRepository(allUserData);
+  let newUser = userRepo.getDataById(random());
+  currentUser = new User(newUser);
+  userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
+  displayStepsComparison(userRepo);
+}
+
+function random() {
+  return Math.floor(Math.random() * 50)
+}
+
+function displayStepsComparison(repo) {
   stepComparison.innerText =
   `Your step goal is ${currentUser.dailyStepGoal}, compared to your
-  fellow users' average goal of 6667!`;
+  fellow users' average goal of ${repo.getAllUserAverageStepGoal()}!`;
 }
 
 function displayUserInformationPage() {
