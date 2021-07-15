@@ -28,7 +28,7 @@
         <button class="sleep-info" id="sleep-btn">
           <img class="sleep-image" src="./images/moon.png" alt="sleep icon">
         Sleep</button>
-        <button class="activity-info">
+        <button class="activity-info" id="activity-btn">
           <img class="activity-image" src="./images/footprints.png" alt="steps icon">
           Activity
         </button>
@@ -41,13 +41,17 @@
    <section class="hydration hidden" id="hydration-info-page">
     <h1 class="hydration-heading">Hydration</h1>
     <img class="hydration-image waterdrop" src="./images/water.png" atl="water icon">
-    <div class="bar-graph"></div>
+    <div class="water-chart">
+      <canvas class="hydro-chart" id="hydration-chart"></canvas>
+    </div>
    </section>
 
    <section class="sleep hidden" id="sleep-info-page">
     <h1 class="sleep-header">Sleep</h1>
     <img class="sleep-image moon" src="./images/moon.png" alt="sleep icon">
-    <div class="bar-graph"></div>
+    <div class="sleep-chart">
+      <canvas id="snooze-chart"></canvas>
+    </div>    
     <h3 class="sleep-averages">All Time Averages</h3>
     <div class="sleep-avg-data">
       <p class="sleep-quality">Sleep Quality: </p>
@@ -55,10 +59,12 @@
     </div>
    </section>
 
-   <section class="activity hidden">
+   <section class="activity hidden" id="activity-info-page">
     <h1 class="activity-header">Activity</h1>
     <img class="activity-image footsteps" src="./images/footprints.png" alt="steps icon">
-    <div class="bar-graph"></div>
+    <div class="steps-chart">
+      <canvas id="activity-chart"></canvas>
+    </div>
     <div class="activity-buttons">
       <button class="activity-btns">Steps</button>
       <button class="activity-btns">Minutes</button>
