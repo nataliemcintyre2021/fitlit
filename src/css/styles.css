@@ -168,10 +168,17 @@ body, html {
   width: 6vh;
 }
 
-.water-chart {
-  height: 40vh;
-  width: 40vw;
+.water-chart,
+.sleep-chart {
+  height: 50vh;
+  width: 50vw;
+  margin-top: 40px;
 }
+
+/* .hydro-chart {
+  height: 100%;
+  width: 100%;
+} */
 
 /* ~~ Sleep Dashboard ~~ */
 

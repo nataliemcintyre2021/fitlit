@@ -28,7 +28,7 @@
         <button class="sleep-info" id="sleep-btn">
           <img class="sleep-image" src="./images/moon.png" alt="sleep icon">
         Sleep</button>
-        <button class="activity-info">
+        <button class="activity-info" id="activity-btn">
           <img class="activity-image" src="./images/footprints.png" alt="steps icon">
           Activity
         </button>
@@ -49,7 +49,9 @@
    <section class="sleep hidden" id="sleep-info-page">
     <h1 class="sleep-header">Sleep</h1>
     <img class="sleep-image moon" src="./images/moon.png" alt="sleep icon">
-    <canvas id="sleep-chart" width="400" height="400"></canvas>
+    <div class="sleep-chart">
+      <canvas id="sleepy-chart"></canvas>
+    </div>    
     <h3 class="sleep-averages">All Time Averages</h3>
     <div class="sleep-avg-data">
       <p class="sleep-quality">Sleep Quality: </p>

@@ -34,9 +34,9 @@ const hydrationInfoPage = document.getElementById('hydration-info-page');
 const hydrationChart = document.getElementById('hydration-chart');
 const sleepBtn = document.getElementById('sleep-btn');
 const sleepInfoPage = document.getElementById('sleep-info-page');
-const sleepChart = document.getElementById('sleep-chart');
+const sleepChart = document.getElementById('sleepy-chart');
+const activityBtn = document.getElementById('activity-btn');
 
-//started on assigning the sleep button information to toggle to that page
 
 const activityChart = document.getElementById('activity-chart');
 const userInfoBtn = document.getElementById('user-info-btn');
@@ -62,6 +62,7 @@ window.addEventListener('load', fetchUserData);
 userInfoBtn.addEventListener('click', displayUserInformationPage);
 flameLogo.addEventListener('click', displayMainLandingPage);
 hydrationBtn.addEventListener('click', displayHydrationInformationPage);
+sleepBtn.addEventListener('click', displaySleepInformationPage)
 
 
 //functions
@@ -113,13 +114,45 @@ function displayHydrationInformationPage() {
 }
 
 function displayHydrationChart() {
-  var myChart = new Chart(hydrationChart, {
+  var myHydrationChart = new Chart(hydrationChart, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Pumpkin'],
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Pumpkin', 'Ocean'],
       datasets: [{
         label: 'Number of Ounces',
-        data: [48, 50, 35, 65, 90, 54, 36],
+        data: [48, 50, 35, 65, 90, 54, 36, 24],
+        backgroundColor: [
+          '#2DA1FA',
+        ],
+        borderColor: [
+          'black',
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+function displaySleepInformationPage() {
+  toggleView(sleepInfoPage, landingPage);
+  displaySleepChart();
+}
+
+function displaySleepChart() {
+  var mySleepChart = new Chart(sleepChart, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
