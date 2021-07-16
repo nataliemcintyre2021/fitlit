@@ -5,6 +5,16 @@ class SleepRepository {
   }
 
 
+  getUserSleep() {
+    return this.data.reduce((acc, sleep) => {
+      if(!acc[sleep["userID"]]) {
+        acc[sleep["userID"]] = [];
+      }
+      acc[sleep["userID"]].push(sleep);
+      return acc;
+    }, {})
+  }
+
   averageHoursOfSleepPerDay(userId) {
     const userSleepData = this.data.filter(user => userId === user["userID"]);
     const averageSleepData = userSleepData.reduce((acc,user) => {
@@ -26,16 +36,6 @@ class SleepRepository {
     console.log(averageSleepQuality)
     return averageSleepQuality;
 }
-
-    getUserSleep() {
-      return this.data.reduce((acc, sleep) => {
-        if(!acc[sleep["userID"]]) {
-          acc[sleep["userID"]] = [];
-        }
-        acc[sleep["userID"]].push(sleep);
-        return acc;
-      }, {})
-    }
 
     calculateDailySleptHours(date, userId) {
     const hoursByDate = this.userSleepDataId[userId].reduce((acc, sleep) => {
@@ -62,16 +62,20 @@ class SleepRepository {
     }
 
     getHoursSleptForWeek(startDate, userId) {
-      let firstDay = this.data.findIndex(day => day.date === startDate);
+      let firstDay = this.userSleepDataId.findIndex(day => day.date === startDate);
       let weekData = [];
       for (let i = 0; i < 7; i++) {
-        weekData.unshift(this.data[firstDay]["hoursSlept"]);
+        weekData.unshift(this.userSleepDataId[firstDay]["hoursSlept"]);
         firstDay--;
       }
+      console.log(weekData)
       return weekData;
     }
 
 
+    // let firstDay = (this.data.findIndex(day => day.date === startDate)) - 6;
+        // let weekData = this.data.slice(firstDay, 7).map(day => day.numOunces);
+        // return weekData;
 
     getAllUserAverageSleepQuality() {
       const theQualityData = this.data.reduce((acc, sleep) => {

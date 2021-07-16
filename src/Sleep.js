@@ -1,5 +1,5 @@
 class Sleep {
-  constructor(userId, sleepData) {
+  constructor(sleepData) {
     this.userSleepData = this.getUserSleepData(userId, sleepData);
 
     // this.id = sleepData.id;
@@ -12,7 +12,7 @@ class Sleep {
   getUserSleep(userId, sleepData) {
     return this.sleepData.filter(user["userID"] === userId)
   }
-  
+
   averageHoursOfSleepPerDay(userId) {
     // const userSleep = new SleepRepository()
     const userData = userSleep.getSleepDataById(userId)

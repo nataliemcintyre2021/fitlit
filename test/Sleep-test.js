@@ -7,11 +7,8 @@ describe('Sleep', () => {
     expect(Sleep).to.be.a('function');
   })
 
-
-
-  // it('should return average fluid ounces consumed per day for all time', function() {
-  //
-    const sleepData = [
+  it('should return average number of hours slept per day', function() {
+    let sleepData = [
       {
         "userID": 1,
         "date": "2019/06/15",
@@ -43,6 +40,14 @@ describe('Sleep', () => {
         "sleepQuality": 3.8
       }
     ];
+
+  // let theSleepData = new SleepRepository(sleepData);
+  let userSleepData = new Sleep(sleepData);
+  console.log(userSleepData)
+  let userTwoAverage = userSleepData.averageHoursOfSleepPerDay(2);
+
+  expect(userTwoAverage).to.equal(7.25)
+  })
   //   let theSleepData = new SleepRepository(sleepData);
   //   let userOneAverage = theSleepData.averageHoursOfSleepPerDay(1);
   //

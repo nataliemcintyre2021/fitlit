@@ -181,7 +181,7 @@ describe('Sleep Repository', () => {
   expect(userAverage).to.equal(4.25)
   })
 
-  it('should return average sleep quality per day', function() {
+  it('should return hours slept for specific day', function() {
     let sleepData = [
       {
         "userID": 1,
@@ -227,7 +227,7 @@ describe('Sleep Repository', () => {
   expect(dailyHours).to.equal(18.3)
   })
 
-  it('should return average sleep quality per day', function() {
+  it('should return sleep quality for specific day', function() {
     let sleepData = [
       {
         "userID": 1,
@@ -390,7 +390,7 @@ describe('Sleep Repository', () => {
     ];
 
   let theSleepData = new SleepRepository(sleepData);
-  let weekSleep = theSleepData.getHoursSleptForWeek();
+  let weekSleep = theSleepData.getHoursSleptForWeek("2019/06/20");
   console.log(weekSleep);
   expect(weekSleep).to.equal([])
   })
