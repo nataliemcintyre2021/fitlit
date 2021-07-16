@@ -10,6 +10,8 @@ import './images/footprints.png';
 import './images/flame.png';
 import UserRepository from './UserRepository';
 import User from './User';
+import Sleep from './Sleep';
+import SleepRepository from './SleepRepository';
 import {getUserData, getSleepData, getActivityData, getHydrationData} from './apiCalls';
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
