@@ -216,11 +216,23 @@ function toggleView(show, hide) {
   hide.classList.add('hidden');
 }
 
-function loadUserInformation() {
+function loadUserInformation() {  
   userNameInfo.innerText = `Name: ${currentUser.name}`;
   userAddressInfo.innerText = `Address: ${currentUser.address}`;
   userEmailInfo.innerText = `Email: ${currentUser.email}`;
   userStrideLengthInfo.innerText = `Stride Length: ${currentUser.strideLength}`;
   userStepGoalInfo.innerText = `Step Goal: ${currentUser.dailyStepGoal}`;
-  userFriendsInfo.innerText = 'Friends: will display here!';
+  userFriendsInfo.innerText = `Friends: ${displayFriends()}`;
+}
+
+function displayFriends() {
+  let result = currentUser.friends.reduce((arr, num) => {
+    allUserData.forEach(user => {
+      if (user.id === num) {
+        arr.push(user.name)
+      }
+    })
+    return arr;
+  }, [])
+  return result;
 }

@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 
 describe('User Repository', () => {
-let userData;
-let repoData;
+  let userData;
+  let repoData;
   beforeEach(function() {
     userData = [
       {
@@ -63,16 +63,15 @@ let repoData;
   it('should give user data based on user ID', function () {
 
     const userId = repoData.getDataById(3);
-    // console.log("repoData2", repoData.data[2])
 
     expect(userId).to.deep.equal(repoData.data[2])
   })
 
   it('should calculate average step goal amongst all users', function() {
 
-      const getSteps = repoData.getAllUserAverageStepGoal();
+    const getSteps = repoData.getAllUserAverageStepGoal();
 
-      expect(getSteps).to.equal(6667);
+    expect(getSteps).to.equal(6667);
   })
 
 });
