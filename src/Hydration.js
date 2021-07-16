@@ -12,7 +12,7 @@ class Hydration {
 
 
   getDailyOunces(dateNeeded) {
-    const dayInfo = this.data.find(day => day.date == dateNeeded);
+    const dayInfo = this.data.find(day => day.date === dateNeeded);
     return dayInfo.numOunces;
   }
 
