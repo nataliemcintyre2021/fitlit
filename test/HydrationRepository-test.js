@@ -38,4 +38,19 @@ describe('Hydration Repository', () => {
     expect(repoData.data).to.deep.equal(userData);
   });
 
+  it('should return user data based on id', () => {
+  
+    let user3 = repoData.getHydroDataById(3);
+    expect(user3).to.deep.equal([userData[2]]);
+  });
+
+  it('should return all instances of data for the user based on id', () => {
+    userData.push(
+      {"userID": 3,
+        "date": "2019/06/19",
+        "numOunces": 85})
+    let user3 = repoData.getHydroDataById(3);
+    expect(user3).to.deep.equal([userData[2], userData[4]]);
+  });
+
 });
