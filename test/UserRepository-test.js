@@ -56,14 +56,14 @@ let repoData;
   });
 
   it('should have a parameter to take in user data', function () {
-
+    // console.log(repoData)
     expect(repoData).to.be.an.instanceof(UserRepository);
   })
 
   it('should give user data based on user ID', function () {
 
     const userId = repoData.getDataById(3);
-    console.log("repoData2", repoData.data[2])
+    // console.log("repoData2", repoData.data[2])
 
     expect(userId).to.deep.equal(repoData.data[2])
   })
