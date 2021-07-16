@@ -10,8 +10,11 @@ import './images/footprints.png';
 import './images/flame.png';
 import UserRepository from './UserRepository';
 import User from './User';
+import Sleep from './Sleep';
+import SleepRepository from './SleepRepository';
 import {getUserData, getSleepData, getActivityData, getHydrationData} from './apiCalls';
 import Chart from 'chart.js/auto';
+import dayjs from 'dayjs';
 
 
 //query selectors
@@ -19,6 +22,7 @@ const userWelcome = document.getElementById('user-welcome');
 const stepComparison = document.getElementById('step-comparison');
 const flameLogo = document.getElementById('flame-logo');
 const landingPage = document.getElementById('main-dashboard');
+const date = document.getElementById('dashboard-date');
 
 const hydrationBtn = document.getElementById('ounce-btn');
 const hydrationInfoPage = document.getElementById('hydration-info-page');
@@ -57,12 +61,13 @@ flameLogo.addEventListener('click', displayMainLandingPage);
 hydrationBtn.addEventListener('click', displayHydrationInformationPage);
 sleepBtn.addEventListener('click', displaySleepInformationPage);
 activityBtn.addEventListener('click', displayActivityInformationPage);
+console.log(dayjs().format('DD MM YYYY'))
 
 
 //functions
 function fetchUserData() {
   Promise.all([getUserData(), getSleepData(), getActivityData(), getHydrationData()])
-    .then(values => parseValues(values)) 
+    .then(values => parseValues(values))
 }
 
 function parseValues(data) {
@@ -79,6 +84,12 @@ function createNewUser() {
   currentUser = new User(newUser);
   userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
   displayStepsComparison(userRepo);
+  displayDate();
+}
+
+function displayDate() {
+  // let newDate = datejs(date.dataset.date)
+  date.innerText = dayjs().format('DD MM YYYY')
 }
 
 function random() {
@@ -150,10 +161,10 @@ function displaySleepChart() {
         label: '# of Votes',
         data: [12, 19, 3, 5, 2, 3],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',          
+          'rgba(255, 99, 132, 0.2)',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',         
+          'rgba(255, 99, 132, 1)',
         ],
         borderWidth: 1
       }]

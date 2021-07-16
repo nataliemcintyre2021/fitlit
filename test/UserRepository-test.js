@@ -56,7 +56,7 @@ describe('User Repository', () => {
   });
 
   it('should have a parameter to take in user data', function () {
-
+    // console.log(repoData)
     expect(repoData).to.be.an.instanceof(UserRepository);
   })
 
