@@ -62,15 +62,32 @@ class SleepRepository {
     }
 
     getHoursSleptForWeek(startDate, userId) {
-      let firstDay = this.userSleepDataId.findIndex(day => day.date === startDate);
-      let weekData = [];
-      for (let i = 0; i < 7; i++) {
-        weekData.unshift(this.userSleepDataId[firstDay]["hoursSlept"]);
-        firstDay--;
-      }
+      const userSleepData = this.data.filter(user => userId === user["userID"]);
+      console.log("user sleep data", userSleepData);
+      let firstDay = (userSleepData.findIndex(day => day["data"] === startDate)) - 6;
+      let weekData = userSleepData.slice(firstDay, 7).map(day => day["hoursSlept"]);
       console.log(weekData)
       return weekData;
     }
+
+    getQualitySleepForWeek(startDate, userId) {
+      const userSleepData = this.data.filter(user => userId === user["userID"]);
+      console.log("user sleep quality data", userSleepData);
+      let firstDay = (userSleepData.findIndex(day => day["data"] === startDate)) - 6;
+      let weekData = userSleepData.slice(firstDay, 7).map(day => day["sleepQuality"]);
+      console.log(weekData)
+      return weekData;
+    }
+    // getHoursSleptForWeek(startDate, userId) {
+    //   let firstDay = this.userSleepDataId.findIndex(day => day.date === startDate);
+    //   let weekData = [];
+    //   for (let i = 0; i < 7; i++) {
+    //     weekData.unshift(this.userSleepDataId[firstDay]["hoursSlept"]);
+    //     firstDay--;
+    //   }
+    //   console.log(weekData)
+    //   return weekData;
+    // }
 
 
     // let firstDay = (this.data.findIndex(day => day.date === startDate)) - 6;

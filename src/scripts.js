@@ -92,6 +92,15 @@ function displayDate() {
   date.innerText = dayjs().format('DD MM YYYY')
 }
 
+// function displayDaySleepData() {
+//   let theSleepData = new SleepRepository(allSleepData);
+//   let userId = currentUser.id;
+//   let currentUserSleepData = theSleepData.calculateDailySleptHours("2019/06/15", userId)
+//
+//
+//
+// }
+
 function random() {
   return Math.floor(Math.random() * 50)
 }
