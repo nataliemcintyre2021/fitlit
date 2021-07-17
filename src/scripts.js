@@ -76,7 +76,6 @@ date.addEventListener('change', updateCurrentDate);
 function fetchUserData() {
   Promise.all([getUserData(), getSleepData(), getActivityData(), getHydrationData()])
     .then(values => parseValues(values))
-    // console.log(dayjs(date.value).format('DD MM YYYY');
 }
 
 function parseValues(data) {
@@ -158,13 +157,6 @@ function displayHydrationInformationPage() {
   addHydrationData(myHydrationChart);
 }
 
-// function addHydrationInformation(userHydro) {
-//   console.log(myHydrationChart)
-//   myHydrationChart.data.datasets.forEach((dataset) => {
-//     dataset.data.push(userHydro);
-//   })
-// }
-
 function createHydrationChart() { 
 
   myHydrationChart = new Chart(hydrationChart, {
@@ -184,31 +176,18 @@ function createHydrationChart() {
       }]
     },
     options: {
-      title: {
-        display: true,
-        text: 'Your Weekly Ounces',
-        fontSize: 25,
-      },
-      legend: {
-        display: false,
-      }
-      // scales: {
-      //   y: {
-      //     beginAtZero: true
-      //   }
-      // }
+    
     }
   });
 }
 
 function removeHydrationData(chart) {
   for (let i = 0; i < 8; i++) {
-    chart.data.labels.pop();
-    
+    chart.data.labels.pop();    
     chart.data.datasets.forEach((dataset) => {
-      dataset.data.pop()
-    })
-  }
+      dataset.data.pop();
+    });
+  };
   chart.update();
 }
 
