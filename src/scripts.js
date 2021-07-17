@@ -170,7 +170,7 @@ function createHydrationChart() {
   myHydrationChart = new Chart(hydrationChart, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Pumpkin', 'Ocean'],
+      labels: [],
       datasets: [{
         label: 'Days of the Week',
         data: [],
@@ -202,27 +202,30 @@ function createHydrationChart() {
 }
 
 function removeHydrationData(chart) {
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 8; i++) {
+    chart.data.labels.pop();
+    
     chart.data.datasets.forEach((dataset) => {
       dataset.data.pop()
     })
   }
   chart.update();
-  console.log(chart.data.datasets, 'chart info')
 }
 
-function addHydrationData(chart) {
-  
-  let weekData = currentUserHydration.getDailyOuncesForAWeek(currentDate);
+function addHydrationData(chart) {  
+  let weekData = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'numOunces');
+  let weekLabels = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'date');
  
-  weekData.forEach(day => {
+  weekLabels.forEach(day => {
+    let date = dayjs(day).format('MMM DD')
+    chart.data.labels.push(date)
+  });
+  weekData.forEach(day => {    
     chart.data.datasets.forEach((dataset) => {
-      dataset.data.push(day)
+      dataset.data.push(day);
     })
   })  
   chart.update();
-  console.log(weekData, 'weekly info');
-  
 }
 
 function displaySleepInformationPage() {
