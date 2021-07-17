@@ -10,8 +10,10 @@ import './images/footprints.png';
 import './images/flame.png';
 import UserRepository from './UserRepository';
 import User from './User';
-import Sleep from './Sleep';
+// import Sleep from './Sleep';
 import SleepRepository from './SleepRepository';
+import Hydration from './Hydration';
+import HydrationRepository from './HydrationRepository';
 import {getUserData, getSleepData, getActivityData, getHydrationData} from './apiCalls';
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
@@ -61,13 +63,14 @@ flameLogo.addEventListener('click', displayMainLandingPage);
 hydrationBtn.addEventListener('click', displayHydrationInformationPage);
 sleepBtn.addEventListener('click', displaySleepInformationPage);
 activityBtn.addEventListener('click', displayActivityInformationPage);
-console.log(dayjs().format('DD MM YYYY'))
+// console.log((dayjs(date.value).format('YYYY/MM/DD')) === allSleepData[3].date)
 
 
 //functions
 function fetchUserData() {
   Promise.all([getUserData(), getSleepData(), getActivityData(), getHydrationData()])
     .then(values => parseValues(values))
+    // console.log(dayjs(date.value).format('DD MM YYYY');
 }
 
 function parseValues(data) {
@@ -88,8 +91,9 @@ function createNewUser() {
 }
 
 function displayDate() {
+  console.log((dayjs(date.value).format('YYYY/MM/DD')) === allSleepData[3].date)
   // let newDate = datejs(date.dataset.date)
-  date.innerText = dayjs().format('DD MM YYYY')
+  // date.innerText = dayjs().format('DD MM YYYY')
 }
 
 // function displayDaySleepData() {
@@ -225,7 +229,7 @@ function toggleView(show, hide) {
   hide.classList.add('hidden');
 }
 
-function loadUserInformation() {  
+function loadUserInformation() {
   userNameInfo.innerText = `Name: ${currentUser.name}`;
   userAddressInfo.innerText = `Address: ${currentUser.address}`;
   userEmailInfo.innerText = `Email: ${currentUser.email}`;
