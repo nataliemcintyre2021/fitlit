@@ -96,11 +96,9 @@ function createNewUser() {
   userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
   displayStepsComparison(userRepo);
   updateCurrentDate();
-<<<<<<< HEAD
   displayDaySleepData();
-=======
   createHydrationChart();
->>>>>>> main
+
 }
 
 // function displayDate() {
@@ -136,13 +134,10 @@ function displayDaySleepData() {
 
 function updateCurrentDate() {
   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
-<<<<<<< HEAD
   displayDaySleepData();
   console.log(currentDate);
-=======
   createUserHydration();
   // console.log(currentDate);
->>>>>>> main
 }
 
 function createUserHydration() {
@@ -153,7 +148,7 @@ function createUserHydration() {
 }
 
 function displayUserHydration() {
-  hydrationBtnDisplay.innerText = 
+  hydrationBtnDisplay.innerText =
   `${currentUserHydration.getDailyOunces(currentDate)} oz`;
 }
 
@@ -186,7 +181,7 @@ function displayHydrationInformationPage() {
   addHydrationData(myHydrationChart);
 }
 
-function createHydrationChart() { 
+function createHydrationChart() {
 
   myHydrationChart = new Chart(hydrationChart, {
     type: 'bar',
@@ -205,14 +200,14 @@ function createHydrationChart() {
       }]
     },
     options: {
-    
+
     }
   });
 }
 
 function removeHydrationData(chart) {
   for (let i = 0; i < 8; i++) {
-    chart.data.labels.pop();    
+    chart.data.labels.pop();
     chart.data.datasets.forEach((dataset) => {
       dataset.data.pop();
     });
@@ -220,19 +215,19 @@ function removeHydrationData(chart) {
   chart.update();
 }
 
-function addHydrationData(chart) {  
+function addHydrationData(chart) {
   let weekData = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'numOunces');
   let weekLabels = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'date');
- 
+
   weekLabels.forEach(day => {
     let date = dayjs(day).format('MMM DD')
     chart.data.labels.push(date)
   });
-  weekData.forEach(day => {    
+  weekData.forEach(day => {
     chart.data.datasets.forEach((dataset) => {
       dataset.data.push(day);
     })
-  })  
+  })
   chart.update();
 }
 
