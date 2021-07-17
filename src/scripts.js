@@ -56,6 +56,9 @@ let allUserData = [];
 let allHydrationData = [];
 let allSleepData = [];
 let allActivityData = [];
+let currentUserHydration;
+let myHydrationChart;
+
 
 
 //event listeners
@@ -91,6 +94,7 @@ function createNewUser() {
   userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
   displayStepsComparison(userRepo);
   updateCurrentDate();
+  createHydrationChart();
 }
 
 // function displayDate() {
@@ -101,8 +105,8 @@ function createNewUser() {
 
 function updateCurrentDate() {
   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
-  // console.log(currentDate);
   createUserHydration();
+  // console.log(currentDate);
 }
 // function displayDaySleepData() {
 //   let theSleepData = new SleepRepository(allSleepData);
@@ -116,13 +120,13 @@ function updateCurrentDate() {
 function createUserHydration() {
   let userHydroRepo = new HydrationRepository(allHydrationData);
   let userHydration = userHydroRepo.getHydroDataById(currentUser.id);
-  let currentUserHydration = new Hydration(userHydration);
-  displayUserHydration(currentUserHydration);
+  currentUserHydration = new Hydration(userHydration);
+  displayUserHydration();
 }
 
-function displayUserHydration(userHydro) {
+function displayUserHydration() {
   hydrationBtnDisplay.innerText = 
-  `${userHydro.getDailyOunces(currentDate)} oz`;
+  `${currentUserHydration.getDailyOunces(currentDate)} oz`;
 }
 
 function random() {
@@ -150,18 +154,26 @@ function displayMainLandingPage() {
 
 function displayHydrationInformationPage() {
   toggleView(hydrationInfoPage, landingPage);
-  displayHydrationChart();
- 
+  removeHydrationData(myHydrationChart);
+  addHydrationData(myHydrationChart);
 }
 
-function displayHydrationChart() {
-  var myHydrationChart = new Chart(hydrationChart, {
+// function addHydrationInformation(userHydro) {
+//   console.log(myHydrationChart)
+//   myHydrationChart.data.datasets.forEach((dataset) => {
+//     dataset.data.push(userHydro);
+//   })
+// }
+
+function createHydrationChart() { 
+
+  myHydrationChart = new Chart(hydrationChart, {
     type: 'bar',
     data: {
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Pumpkin', 'Ocean'],
       datasets: [{
-        label: 'Number of Ounces',
-        data: [48, 50, 35, 65, 90, 54, 36, 24],
+        label: 'Days of the Week',
+        data: [],
         backgroundColor: [
           '#2DA1FA',
         ],
@@ -172,13 +184,45 @@ function displayHydrationChart() {
       }]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+      title: {
+        display: true,
+        text: 'Your Weekly Ounces',
+        fontSize: 25,
+      },
+      legend: {
+        display: false,
       }
+      // scales: {
+      //   y: {
+      //     beginAtZero: true
+      //   }
+      // }
     }
   });
+}
+
+function removeHydrationData(chart) {
+  for (let i = 0; i < 7; i++) {
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data.pop()
+    })
+  }
+  chart.update();
+  console.log(chart.data.datasets, 'chart info')
+}
+
+function addHydrationData(chart) {
+  
+  let weekData = currentUserHydration.getDailyOuncesForAWeek(currentDate);
+ 
+  weekData.forEach(day => {
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data.push(day)
+    })
+  })  
+  chart.update();
+  console.log(weekData, 'weekly info');
+  
 }
 
 function displaySleepInformationPage() {
