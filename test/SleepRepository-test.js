@@ -470,4 +470,80 @@ describe('Sleep Repository', () => {
   console.log(weekSleep);
   expect(weekSleep).to.deep.equal([4.7, 3.8, 3.8, 3.8, 3.8, 3.8, 3.8])
   })
+
+  it('should return sleep quality for week', function() {
+    let sleepData = [
+      {
+        "userID": 1,
+        "date": "2019/06/15",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/15",
+        "hoursSlept": 7,
+        "sleepQuality": 4.7
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/15",
+        "hoursSlept": 10.8,
+        "sleepQuality": 4.7
+      },
+        {
+        "userID": 1,
+        "date": "2019/06/16",
+        "hoursSlept": 4.1,
+        "sleepQuality": 3.8
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/16",
+        "hoursSlept": 7.5,
+        "sleepQuality": 3.8
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/16",
+        "hoursSlept": 7.5,
+        "sleepQuality": 3.8
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/17",
+        "hoursSlept": 7.5,
+        "sleepQuality": 3.8
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/18",
+        "hoursSlept": 7.5,
+        "sleepQuality": 3.8
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/19",
+        "hoursSlept": 7.5,
+        "sleepQuality": 3.8
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/20",
+        "hoursSlept": 7.5,
+        "sleepQuality": 3.8
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/21",
+        "hoursSlept": 7.5,
+        "sleepQuality": 3.8
+      }
+    ];
+
+  let theSleepData = new SleepRepository(sleepData);
+  let weekSleep = theSleepData.getDaysOfWeek("2019/06/21", 3);
+  console.log(weekSleep);
+  expect(weekSleep).to.deep.equal([4.7, 3.8, 3.8, 3.8, 3.8, 3.8, 3.8])
+  })
 })

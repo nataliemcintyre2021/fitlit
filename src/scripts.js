@@ -34,6 +34,8 @@ const sleepBtn = document.getElementById('sleep-btn');
 const sleepArea = document.getElementById('sleep-today');
 const sleepInfoPage = document.getElementById('sleep-info-page');
 const sleepChart = document.getElementById('snooze-chart');
+const sleepQuality = document.getElementById('sleep-quality-info');
+const sleepHours = document.getElementById('sleep-hours-info');
 
 const activityBtn = document.getElementById('activity-btn');
 const activityInfoPage = document.getElementById('activity-info-page');
@@ -100,23 +102,35 @@ function createNewUser() {
 //   // date.innerText = dayjs().format('DD MM YYYY')
 // }
 
-function updateCurrentDate() {
-  currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
-  // displayDateSleepData();
-  console.log(currentDate);
-}
+// function updateCurrentDate() {
+//   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
+//   displayDateSleepData();
+//   console.log(currentDate);
+// }
 
 function displayDaySleepData() {
   let theSleepData = new SleepRepository(allSleepData);
+  console.log(theSleepData)
   let userId = currentUser.id;
   let currentUserSleepData = theSleepData.calculateDailySleptHours(currentDate, userId)
   sleepArea.innerText = `${currentUserSleepData} hours`;
   console.log("current Date", currentDate)
   console.log("current Id", userId)
-  let chartSleepData = theSleepData.getQualitySleepForWeek(currentDate, userId)
-  console.log("chartSleepData", chartSleepData)
+  // let chartSleepData = theSleepData.getHoursSleptForWeek(currentDate, userId)
+  console.log("chartSleepData", theSleepData.getHoursSleptForWeek(currentDate, userId))
+  let currentUserSleepQuality = theSleepData.averageSleepQualityPerDay(userId);
+  let currentUserSleepHours = theSleepData.averageHoursOfSleepPerDay(userId);
+  sleepQuality.innerText = `Sleep Quality: ${currentUserSleepQuality}`;
+  sleepHours.innerText = `Sleep Hours: ${currentUserSleepHours}`;
   // updateSleepChart(displaySleepChart(), chartSleepData))
+  // console.log()
 
+}
+
+function updateCurrentDate() {
+  currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
+  displayDaySleepData();
+  console.log(currentDate);
 }
 
 function random() {
