@@ -91,7 +91,6 @@ function createNewUser() {
   userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
   displayStepsComparison(userRepo);
   updateCurrentDate();
-  displayDateHydration();
 }
 
 // function displayDate() {
@@ -103,6 +102,7 @@ function createNewUser() {
 function updateCurrentDate() {
   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
   // console.log(currentDate);
+  createUserHydration();
 }
 // function displayDaySleepData() {
 //   let theSleepData = new SleepRepository(allSleepData);
@@ -113,12 +113,16 @@ function updateCurrentDate() {
 //
 // }
 
-function displayDateHydration() {
+function createUserHydration() {
   let userHydroRepo = new HydrationRepository(allHydrationData);
   let userHydration = userHydroRepo.getHydroDataById(currentUser.id);
   let currentUserHydration = new Hydration(userHydration);
+  displayUserHydration(currentUserHydration);
+}
+
+function displayUserHydration(userHydro) {
   hydrationBtnDisplay.innerText = 
-  `${currentUserHydration.getDailyOunces(currentDate)} oz`;
+  `${userHydro.getDailyOunces(currentDate)} oz`;
 }
 
 function random() {
@@ -147,6 +151,7 @@ function displayMainLandingPage() {
 function displayHydrationInformationPage() {
   toggleView(hydrationInfoPage, landingPage);
   displayHydrationChart();
+ 
 }
 
 function displayHydrationChart() {
