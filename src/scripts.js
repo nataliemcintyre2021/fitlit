@@ -31,6 +31,7 @@ const hydrationInfoPage = document.getElementById('hydration-info-page');
 const hydrationChart = document.getElementById('hydration-chart');
 
 const sleepBtn = document.getElementById('sleep-btn');
+const sleepArea = document.getElementById('sleep-today');
 const sleepInfoPage = document.getElementById('sleep-info-page');
 const sleepChart = document.getElementById('snooze-chart');
 
@@ -90,6 +91,7 @@ function createNewUser() {
   userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
   displayStepsComparison(userRepo);
   updateCurrentDate();
+  displayDaySleepData();
 }
 
 // function displayDate() {
@@ -100,16 +102,22 @@ function createNewUser() {
 
 function updateCurrentDate() {
   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
+  // displayDateSleepData();
   console.log(currentDate);
 }
-// function displayDaySleepData() {
-//   let theSleepData = new SleepRepository(allSleepData);
-//   let userId = currentUser.id;
-//   let currentUserSleepData = theSleepData.calculateDailySleptHours("2019/06/15", userId)
-//
-//
-//
-// }
+
+function displayDaySleepData() {
+  let theSleepData = new SleepRepository(allSleepData);
+  let userId = currentUser.id;
+  let currentUserSleepData = theSleepData.calculateDailySleptHours(currentDate, userId)
+  sleepArea.innerText = `${currentUserSleepData} hours`;
+  console.log("current Date", currentDate)
+  console.log("current Id", userId)
+  let chartSleepData = theSleepData.getQualitySleepForWeek(currentDate, userId)
+  console.log("chartSleepData", chartSleepData)
+  // updateSleepChart(displaySleepChart(), chartSleepData))
+
+}
 
 function random() {
   return Math.floor(Math.random() * 50)
@@ -171,6 +179,10 @@ function displaySleepInformationPage() {
   displaySleepChart();
 }
 
+function updateSleepChart(chart, data) {
+  chart.data.datasets.push(data)
+}
+
 function displaySleepChart() {
   var mySleepChart = new Chart(sleepChart, {
     type: 'bar',
@@ -178,7 +190,7 @@ function displaySleepChart() {
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: [0, 0, 0, 5, 2, 3],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
         ],
@@ -196,6 +208,8 @@ function displaySleepChart() {
       }
     }
   });
+  // console.log(mySleepChart)
+  // return mySleepChart;
 }
 
 function displayActivityInformationPage() {

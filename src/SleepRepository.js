@@ -66,7 +66,7 @@ class SleepRepository {
       console.log("user sleep data", userSleepData);
       let firstDay = (userSleepData.findIndex(day => day["data"] === startDate)) - 6;
       let weekData = userSleepData.slice(firstDay, 7).map(day => day["hoursSlept"]);
-      console.log(weekData)
+      console.log("user week data", weekData)
       return weekData;
     }
 
