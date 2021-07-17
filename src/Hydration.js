@@ -15,9 +15,10 @@ class Hydration {
     return dayInfo.numOunces;
   }
 
-  getDailyOuncesForAWeek(startDate) {
-    let firstDay = (this.data.findIndex(day => day.date === startDate)) - 6;
-    let weekData = this.data.slice(firstDay, 7).map(day => day.numOunces);
+  getDailyOuncesForAWeek(startDate, info) {
+    let today = (this.data.findIndex(day => day.date === startDate)) + 1;
+    let weekAgo = (today - 7);
+    let weekData = this.data.slice(weekAgo, today).map(day => day[info]);  
     return weekData;
   }
 }
