@@ -50,6 +50,7 @@ const userFriendsInfo = document.getElementById('your-friends');
 
 //global variable
 let currentUser;
+let currentDate;
 let allUserData = [];
 let allHydrationData = [];
 let allSleepData = [];
@@ -63,6 +64,7 @@ flameLogo.addEventListener('click', displayMainLandingPage);
 hydrationBtn.addEventListener('click', displayHydrationInformationPage);
 sleepBtn.addEventListener('click', displaySleepInformationPage);
 activityBtn.addEventListener('click', displayActivityInformationPage);
+date.addEventListener('change', updateCurrentDate);
 // console.log((dayjs(date.value).format('YYYY/MM/DD')) === allSleepData[3].date)
 
 
@@ -87,15 +89,19 @@ function createNewUser() {
   currentUser = new User(newUser);
   userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
   displayStepsComparison(userRepo);
-  displayDate();
+  updateCurrentDate();
 }
 
-function displayDate() {
-  console.log((dayjs(date.value).format('YYYY/MM/DD')) === allSleepData[3].date)
-  // let newDate = datejs(date.dataset.date)
-  // date.innerText = dayjs().format('DD MM YYYY')
-}
+// function displayDate() {
+//   console.log((dayjs(date.value).format('YYYY/MM/DD')) === allSleepData[3].date)
+//   // let newDate = datejs(date.dataset.date)
+//   // date.innerText = dayjs().format('DD MM YYYY')
+// }
 
+function updateCurrentDate() {
+  currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
+  console.log(currentDate);
+}
 // function displayDaySleepData() {
 //   let theSleepData = new SleepRepository(allSleepData);
 //   let userId = currentUser.id;
