@@ -27,6 +27,7 @@ const landingPage = document.getElementById('main-dashboard');
 const date = document.getElementById('dashboard-date');
 
 const hydrationBtn = document.getElementById('ounce-btn');
+const hydrationBtnDisplay = document.getElementById('daily-ounce');
 const hydrationInfoPage = document.getElementById('hydration-info-page');
 const hydrationChart = document.getElementById('hydration-chart');
 
@@ -90,6 +91,7 @@ function createNewUser() {
   userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
   displayStepsComparison(userRepo);
   updateCurrentDate();
+  displayDateHydration();
 }
 
 // function displayDate() {
@@ -100,7 +102,7 @@ function createNewUser() {
 
 function updateCurrentDate() {
   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
-  console.log(currentDate);
+  // console.log(currentDate);
 }
 // function displayDaySleepData() {
 //   let theSleepData = new SleepRepository(allSleepData);
@@ -110,6 +112,14 @@ function updateCurrentDate() {
 //
 //
 // }
+
+function displayDateHydration() {
+  let userHydroRepo = new HydrationRepository(allHydrationData);
+  let userHydration = userHydroRepo.getHydroDataById(currentUser.id);
+  let currentUserHydration = new Hydration(userHydration);
+  hydrationBtnDisplay.innerText = 
+  `${currentUserHydration.getDailyOunces(currentDate)} oz`;
+}
 
 function random() {
   return Math.floor(Math.random() * 50)
