@@ -194,17 +194,20 @@ body, html {
 }
 
 .moon {
-  height: 6vh;
-  width: 6vw;
+  height: 4em;
+  width: 4em;
 }
 
 .sleep-averages {
-  font-size: 2vh;
+  font-size: 2.5vh;
   margin-bottom: 20px;
+  margin-bottom: .5vh;
 }
 
 .sleep-avg-data {
   display: flex;
+  font-size: 2vh;
+
 }
 
 .sleep-quality,
