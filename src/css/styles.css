@@ -23,15 +23,15 @@ body, html {
   height: 10vh;
 }
 
+.fit-logo {
+  margin: 10px;
+  cursor: pointer;
+}
+
 .logo-img {
   height: 5vh;
   width: 5vh;
   padding: 2px;
-}
-
-.fit-logo {
-  margin: 10px;
-  cursor: pointer;
 }
 
 .app-name {
@@ -101,16 +101,16 @@ body, html {
   background-color: #46D4B6;
 }
 
-.sleep-image,
 .hydration-image,
+.sleep-image,
 .activity-image {
   height: 4vh;
   width: 4vh;
   margin: 8px;
 }
 
-.sleep-info:hover,
 .hydration-info:hover,
+.sleep-info:hover,
 .activity-info:hover {
   box-shadow: -4px -6px 6px #7D7D7D;
 }
@@ -253,18 +253,14 @@ li {
 
 /* mobile size */
 @media screen and (max-width: 375px) {
-  .water-chart,
-  .sleep-chart,
-  .steps-chart {
-    height: 90vw;
-    width: 55vh;
-    margin-top: 40px;
+  .app-name {
+    font-size: 1em;
   }
-
+  
   .date {
     min-height: 6%;
   }
-
+  
   .hydration-info,
   .sleep-info,
   .activity-info {
@@ -286,12 +282,23 @@ li {
     margin-bottom: 2vh;
   }
 
+  .water-chart,
+  .sleep-chart,
+  .steps-chart {
+    height: 90vw;
+    width: 55vh;
+    margin-top: 40px;
+  }
+
   .sleep-avg-data {
     margin-bottom: 2vh;
   }
 
-  .app-name {
-    font-size: 1em;
+  .activity-btns {
+    height: 7vh;
+    width: 18vw;
+    margin: 20px; 
+    font-size: 2vh;  
   }
 }
 
