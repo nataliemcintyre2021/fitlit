@@ -10,7 +10,8 @@ import User from './User';
 import SleepRepository from './SleepRepository';
 import Hydration from './Hydration';
 import HydrationRepository from './HydrationRepository';
-import {getUserData, getSleepData, getActivityData, getHydrationData} from './apiCalls';
+import {getUserData, getSleepData, 
+  getActivityData, getHydrationData} from './apiCalls';
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
 
@@ -56,6 +57,7 @@ let allActivityData = [];
 let currentUserHydration;
 let myHydrationChart;
 let mySleepChart;
+let myActivityChart;
 
 //event listeners
 window.addEventListener('load', fetchUserData);
@@ -68,7 +70,8 @@ date.addEventListener('change', updateCurrentDate);
 
 //functions
 function fetchUserData() {
-  Promise.all([getUserData(), getSleepData(), getActivityData(), getHydrationData()])
+  Promise.all([getUserData(), getSleepData(), 
+    getActivityData(), getHydrationData()])
     .then(values => parseValues(values))
 }
 
@@ -90,6 +93,7 @@ function createNewUser() {
   displayDaySleepData();
   createSleepChart();
   createHydrationChart();
+  createActivityChart();
 }
 
 function random() {
@@ -111,7 +115,8 @@ function updateCurrentDate() {
 function displayDaySleepData() {
   let theSleepData = new SleepRepository(allSleepData);
   let userId = currentUser.id;
-  let currentUserSleepData = theSleepData.calculateDailySleptHours(currentDate, userId);
+  let currentUserSleepData = 
+    theSleepData.calculateDailySleptHours(currentDate, userId);
   sleepArea.innerText = `${currentUserSleepData} hours`;
   let currentUserSleepQuality = theSleepData.averageSleepQualityPerDay(userId);
   let currentUserSleepHours = theSleepData.averageHoursOfSleepPerDay(userId);
@@ -179,13 +184,15 @@ function removeChartData(chart) {
     chart.data.datasets.forEach((dataset) => {
       dataset.data.pop();
     });
-  };
+  }
   chart.update();
 }
 
 function addHydrationData(chart) {
-  let weekData = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'numOunces');
-  let weekLabels = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'date');
+  let weekData = 
+    currentUserHydration.getDailyOuncesForAWeek(currentDate, 'numOunces');
+  let weekLabels = 
+    currentUserHydration.getDailyOuncesForAWeek(currentDate, 'date');
 
   weekLabels.forEach(day => {
     let date = dayjs(day).format('MMM DD')
@@ -257,11 +264,11 @@ function createSleepChart() {
 
 function displayActivityInformationPage() {
   toggleView(activityInfoPage, landingPage);
-  displayActivityChart();
+  createActivityChart();
 }
 
-function displayActivityChart() {
-  var myStepsChart = new Chart(activityChart, {
+function createActivityChart() {
+  myActivityChart = new Chart(activityChart, {
     type: 'bar',
     data: {
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],

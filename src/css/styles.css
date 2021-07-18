@@ -109,6 +109,12 @@ body, html {
   margin: 8px;
 }
 
+.oz,
+.sleep-by-day,
+.active {
+  font-size: 1.75vh;
+}
+
 .hydration-info:hover,
 .sleep-info:hover,
 .activity-info:hover {
@@ -266,12 +272,6 @@ li {
   .activity-info {
     height: 12vh;
     width: 22vw;
-  }
-
-  .oz,
-  .sleep-by-day,
-  .active {
-    font-size: 1.75vh;
   }
 
   .steps-compare {
