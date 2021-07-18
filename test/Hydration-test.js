@@ -45,7 +45,7 @@ describe('Hydration', () => {
       "date": "2019/06/22",
       "numOunces": 95
     }];
-    
+
     repoData = new Hydration(userData);
   });
 
@@ -72,6 +72,9 @@ describe('Hydration', () => {
     let allDailyOunces = [37, 75, 47, 85, 42, 87, 94];
     expect(weeklyOunces).to.deep.equal(allDailyOunces);
   });
+<<<<<<< HEAD
+})
+=======
 
   it('should return the dates for a given week', () => {
     let daysOfWeek = repoData.getDailyOuncesForAWeek('2019/06/22', 'date');
@@ -79,3 +82,4 @@ describe('Hydration', () => {
     expect(daysOfWeek).to.deep.equal(allDailyOunces);
   });
 })
+>>>>>>> main

@@ -25,7 +25,7 @@ describe('Hydration Repository', () => {
       "userID": 4,
       "date": "2019/06/18",
       "numOunces": 85
-    }]; 
+    }];
 
     repoData = new HydrationRepository(userData);
   });
@@ -39,7 +39,7 @@ describe('Hydration Repository', () => {
   });
 
   it('should return user data based on id', () => {
-  
+
     let user3 = repoData.getHydroDataById(3);
     expect(user3).to.deep.equal([userData[2]]);
   });

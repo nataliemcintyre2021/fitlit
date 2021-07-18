@@ -32,8 +32,11 @@ const hydrationInfoPage = document.getElementById('hydration-info-page');
 const hydrationChart = document.getElementById('hydration-chart');
 
 const sleepBtn = document.getElementById('sleep-btn');
+const sleepArea = document.getElementById('sleep-today');
 const sleepInfoPage = document.getElementById('sleep-info-page');
 const sleepChart = document.getElementById('snooze-chart');
+const sleepQuality = document.getElementById('sleep-quality-info');
+const sleepHours = document.getElementById('sleep-hours-info');
 
 const activityBtn = document.getElementById('activity-btn');
 const activityInfoPage = document.getElementById('activity-info-page');
@@ -58,6 +61,7 @@ let allSleepData = [];
 let allActivityData = [];
 let currentUserHydration;
 let myHydrationChart;
+let mySleepChart;
 
 
 
@@ -93,28 +97,28 @@ function createNewUser() {
   userWelcome.innerText = `Welcome, ${currentUser.returnUserFirstName()} !`;
   displayStepsComparison(userRepo);
   updateCurrentDate();
+  displayDaySleepData();
+  createSleepChart();
   createHydrationChart();
 }
 
-// function displayDate() {
-//   console.log((dayjs(date.value).format('YYYY/MM/DD')) === allSleepData[3].date)
-//   // let newDate = datejs(date.dataset.date)
-//   // date.innerText = dayjs().format('DD MM YYYY')
-// }
+function displayDaySleepData() {
+  let theSleepData = new SleepRepository(allSleepData);
+  let userId = currentUser.id;
+  let currentUserSleepData = theSleepData.calculateDailySleptHours(currentDate, userId)
+  sleepArea.innerText = `${currentUserSleepData} hours`;
+  let currentUserSleepQuality = theSleepData.averageSleepQualityPerDay(userId);
+  let currentUserSleepHours = theSleepData.averageHoursOfSleepPerDay(userId);
+  sleepQuality.innerText = `Sleep Quality: ${currentUserSleepQuality}`;
+  sleepHours.innerText = `Sleep Hours: ${currentUserSleepHours}`;
+}
 
 function updateCurrentDate() {
   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
+  displayDaySleepData();
+  console.log(currentDate);
   createUserHydration();
-  // console.log(currentDate);
 }
-// function displayDaySleepData() {
-//   let theSleepData = new SleepRepository(allSleepData);
-//   let userId = currentUser.id;
-//   let currentUserSleepData = theSleepData.calculateDailySleptHours("2019/06/15", userId)
-//
-//
-//
-// }
 
 function createUserHydration() {
   let userHydroRepo = new HydrationRepository(allHydrationData);
@@ -124,7 +128,7 @@ function createUserHydration() {
 }
 
 function displayUserHydration() {
-  hydrationBtnDisplay.innerText = 
+  hydrationBtnDisplay.innerText =
   `${currentUserHydration.getDailyOunces(currentDate)} oz`;
 }
 
@@ -157,7 +161,7 @@ function displayHydrationInformationPage() {
   addHydrationData(myHydrationChart);
 }
 
-function createHydrationChart() { 
+function createHydrationChart() {
 
   myHydrationChart = new Chart(hydrationChart, {
     type: 'bar',
@@ -183,7 +187,7 @@ function createHydrationChart() {
 
 function removeHydrationData(chart) {
   for (let i = 0; i < 8; i++) {
-    chart.data.labels.pop();    
+    chart.data.labels.pop();
     chart.data.datasets.forEach((dataset) => {
       dataset.data.pop();
     });
@@ -191,50 +195,80 @@ function removeHydrationData(chart) {
   chart.update();
 }
 
-function addHydrationData(chart) {  
+function addHydrationData(chart) {
   let weekData = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'numOunces');
   let weekLabels = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'date');
- 
+
   weekLabels.forEach(day => {
     let date = dayjs(day).format('MMM DD')
     chart.data.labels.push(date)
   });
-  weekData.forEach(day => {    
+  weekData.forEach(day => {
     chart.data.datasets.forEach((dataset) => {
       dataset.data.push(day);
     })
-  })  
+  })
+  chart.update();
+}
+
+function addSleepData(chart) {
+  let theSleepData = new SleepRepository(allSleepData);
+  let userId = currentUser.id;
+  let weekData = theSleepData.getHoursSleptForWeek(currentDate, userId);
+  let weekLabels = theSleepData.getDaysSleepForWeek(currentDate, userId);
+  let weekQuality = theSleepData.getQualitySleepForWeek(currentDate, userId);
+
+  weekLabels.forEach(day => {
+    let date = dayjs(day).format('MMM DD')
+    chart.data.labels.push(date)
+  });
+  weekData.forEach(day => {
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data.push(day);
+    })
+  })
+  weekQuality.forEach(day => {
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data.push(day)
+    })
+  })
+  chart.update();
+}
+
+function removeSleepData(chart) {
+  for (let i = 0; i < 8; i++) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data.pop();
+    });
+  };
   chart.update();
 }
 
 function displaySleepInformationPage() {
   toggleView(sleepInfoPage, landingPage);
-  displaySleepChart();
+  removeSleepData(mySleepChart);
+  addSleepData(mySleepChart);
 }
 
-function displaySleepChart() {
-  var mySleepChart = new Chart(sleepChart, {
-    type: 'bar',
+function updateSleepChart(chart, data) {
+  chart.data.datasets.push(data)
+}
+
+function createSleepChart() {
+  mySleepChart = new Chart(sleepChart, {
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
+        type: 'bar',
+        label: 'Days of the Week',
+        data: []
+      }, {
+        type: 'line',
+        label: 'Quality of Sleep',
+        data: [],
+
+      }],
+      labels: ["1", "2", "3", "4"]
     }
   });
 }
