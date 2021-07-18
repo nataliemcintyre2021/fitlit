@@ -35,6 +35,9 @@ body, html {
   cursor: pointer;
 }
 
+.app-name {
+  font-size: 1.5em;
+}
 /* ~~ Landing Dashboard ~~ */
 
 .dashboard {
@@ -317,6 +320,9 @@ li {
   }
   .sleep-avg-data {
     margin-bottom: 2vh;
+  }
+  .app-name {
+    font-size: 1em;
   }
 }
 
