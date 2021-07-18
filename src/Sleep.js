@@ -1,12 +1,12 @@
-class Sleep {
-  constructor(sleepData) {
-    this.userSleepData = this.getUserSleepData(userId, sleepData);
+// class Sleep {
+//   constructor(sleepData) {
+//     this.userSleepData = this.getUserSleepData(userId, sleepData);
 
     // this.id = sleepData.id;
     // this.date = sleepData.date;
     // this.hoursSlept = sleepData.hoursSlept;
     // this.sleepQuality = sleepData.sleepQuality;
-  }
+  // }
 
 
   // getUserSleep(userId, sleepData) {
@@ -25,10 +25,10 @@ class Sleep {
   // averageHoursOfSleepPerDay(userId) {
   //   const userSleepData =
   // }
-}
+// }
 
 
 
 
 
-module.exports = Sleep;
+// module.exports = Sleep;

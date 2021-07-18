@@ -4,7 +4,6 @@ class SleepRepository {
     this.userSleepDataId = this.getUserSleep();
   }
 
-
   getUserSleep() {
     return this.data.reduce((acc, sleep) => {
       if(!acc[sleep["userID"]]) {
