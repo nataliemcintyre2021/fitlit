@@ -40,7 +40,7 @@ describe('Hydration', () => {
       "date": "2019/06/21",
       "numOunces": 94
     }];
-    
+
     repoData = new Hydration(userData);
   });
 

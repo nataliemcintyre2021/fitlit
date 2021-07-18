@@ -61,6 +61,7 @@ let allSleepData = [];
 let allActivityData = [];
 let currentUserHydration;
 let myHydrationChart;
+let mySleepChart;
 
 
 
@@ -97,39 +98,19 @@ function createNewUser() {
   displayStepsComparison(userRepo);
   updateCurrentDate();
   displayDaySleepData();
+  createSleepChart();
   createHydrationChart();
-
 }
-
-// function displayDate() {
-//   console.log((dayjs(date.value).format('YYYY/MM/DD')) === allSleepData[3].date)
-//   // let newDate = datejs(date.dataset.date)
-//   // date.innerText = dayjs().format('DD MM YYYY')
-// }
-
-// function updateCurrentDate() {
-//   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
-//   displayDateSleepData();
-//   console.log(currentDate);
-// }
 
 function displayDaySleepData() {
   let theSleepData = new SleepRepository(allSleepData);
-  console.log(theSleepData)
   let userId = currentUser.id;
   let currentUserSleepData = theSleepData.calculateDailySleptHours(currentDate, userId)
   sleepArea.innerText = `${currentUserSleepData} hours`;
-  console.log("current Date", currentDate)
-  console.log("current Id", userId)
-  // let chartSleepData = theSleepData.getHoursSleptForWeek(currentDate, userId)
-  console.log("chartSleepData", theSleepData.getHoursSleptForWeek(currentDate, userId))
   let currentUserSleepQuality = theSleepData.averageSleepQualityPerDay(userId);
   let currentUserSleepHours = theSleepData.averageHoursOfSleepPerDay(userId);
   sleepQuality.innerText = `Sleep Quality: ${currentUserSleepQuality}`;
   sleepHours.innerText = `Sleep Hours: ${currentUserSleepHours}`;
-  // updateSleepChart(displaySleepChart(), chartSleepData))
-  // console.log()
-
 }
 
 function updateCurrentDate() {
@@ -137,7 +118,6 @@ function updateCurrentDate() {
   displayDaySleepData();
   console.log(currentDate);
   createUserHydration();
-  // console.log(currentDate);
 }
 
 function createUserHydration() {
@@ -231,42 +211,66 @@ function addHydrationData(chart) {
   chart.update();
 }
 
+function addSleepData(chart) {
+  let theSleepData = new SleepRepository(allSleepData);
+  let userId = currentUser.id;
+  let weekData = theSleepData.getHoursSleptForWeek(currentDate, userId);
+  let weekLabels = theSleepData.getDaysSleepForWeek(currentDate, userId);
+  let weekQuality = theSleepData.getQualitySleepForWeek(currentDate, userId);
+
+  weekLabels.forEach(day => {
+    let date = dayjs(day).format('MMM DD')
+    chart.data.labels.push(date)
+  });
+  weekData.forEach(day => {
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data.push(day);
+    })
+  })
+  weekQuality.forEach(day => {
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data.push(day)
+    })
+  })
+  chart.update();
+}
+
+function removeSleepData(chart) {
+  for (let i = 0; i < 8; i++) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data.pop();
+    });
+  };
+  chart.update();
+}
+
 function displaySleepInformationPage() {
   toggleView(sleepInfoPage, landingPage);
-  displaySleepChart();
+  removeSleepData(mySleepChart);
+  addSleepData(mySleepChart);
 }
 
 function updateSleepChart(chart, data) {
   chart.data.datasets.push(data)
 }
 
-function displaySleepChart() {
-  var mySleepChart = new Chart(sleepChart, {
-    type: 'bar',
+function createSleepChart() {
+  mySleepChart = new Chart(sleepChart, {
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
-        label: '# of Votes',
-        data: [0, 0, 0, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
+        type: 'bar',
+        label: 'Days of the Week',
+        data: []
+      }, {
+        type: 'line',
+        label: 'Quality of Sleep',
+        data: [],
+
+      }],
+      labels: ["1", "2", "3", "4"]
     }
   });
-  // console.log(mySleepChart)
-  // return mySleepChart;
 }
 
 function displayActivityInformationPage() {
