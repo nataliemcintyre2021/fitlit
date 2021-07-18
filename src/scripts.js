@@ -1,6 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 import './css/styles.css';
 import './images/PngItem_311075.png';
 import './images/user.png';
@@ -10,14 +7,12 @@ import './images/footprints.png';
 import './images/flame.png';
 import UserRepository from './UserRepository';
 import User from './User';
-// import Sleep from './Sleep';
 import SleepRepository from './SleepRepository';
 import Hydration from './Hydration';
 import HydrationRepository from './HydrationRepository';
 import {getUserData, getSleepData, getActivityData, getHydrationData} from './apiCalls';
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
-
 
 //query selectors
 const userWelcome = document.getElementById('user-welcome');
@@ -51,7 +46,6 @@ const userStrideLengthInfo = document.getElementById('stride-length');
 const userStepGoalInfo = document.getElementById('step-goal');
 const userFriendsInfo = document.getElementById('your-friends');
 
-
 //global variable
 let currentUser;
 let currentDate;
@@ -63,8 +57,6 @@ let currentUserHydration;
 let myHydrationChart;
 let mySleepChart;
 
-
-
 //event listeners
 window.addEventListener('load', fetchUserData);
 userInfoBtn.addEventListener('click', displayUserInformationPage);
@@ -73,8 +65,6 @@ hydrationBtn.addEventListener('click', displayHydrationInformationPage);
 sleepBtn.addEventListener('click', displaySleepInformationPage);
 activityBtn.addEventListener('click', displayActivityInformationPage);
 date.addEventListener('change', updateCurrentDate);
-// console.log((dayjs(date.value).format('YYYY/MM/DD')) === allSleepData[3].date)
-
 
 //functions
 function fetchUserData() {
@@ -105,7 +95,7 @@ function createNewUser() {
 function displayDaySleepData() {
   let theSleepData = new SleepRepository(allSleepData);
   let userId = currentUser.id;
-  let currentUserSleepData = theSleepData.calculateDailySleptHours(currentDate, userId)
+  let currentUserSleepData = theSleepData.calculateDailySleptHours(currentDate, userId);
   sleepArea.innerText = `${currentUserSleepData} hours`;
   let currentUserSleepQuality = theSleepData.averageSleepQualityPerDay(userId);
   let currentUserSleepHours = theSleepData.averageHoursOfSleepPerDay(userId);
@@ -116,7 +106,6 @@ function displayDaySleepData() {
 function updateCurrentDate() {
   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
   displayDaySleepData();
-  console.log(currentDate);
   createUserHydration();
 }
 
@@ -180,7 +169,6 @@ function createHydrationChart() {
       }]
     },
     options: {
-
     }
   });
 }
@@ -224,20 +212,10 @@ function addSleepData(chart) {
   });
   weekData.forEach(day => {
     chart.data.datasets[0].data.push(day)
-
-    // forEach((dataset) => {
-    //   dataset.data.push(day);
-    // })
   })
   weekQuality.forEach(day => {
     chart.data.datasets[1].data.push(day)
-
-    // forEach((dataset) => {
-    //   dataset.data.push(day)
-    // })
-  })
-  console.log("Week hours", weekData)
-  console.log("Week quality", weekQuality)
+  }) 
   chart.update();
 }
 
