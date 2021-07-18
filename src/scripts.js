@@ -223,15 +223,21 @@ function addSleepData(chart) {
     chart.data.labels.push(date)
   });
   weekData.forEach(day => {
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.push(day);
-    })
+    chart.data.datasets[0].data.push(day)
+
+    // forEach((dataset) => {
+    //   dataset.data.push(day);
+    // })
   })
   weekQuality.forEach(day => {
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.push(day)
-    })
+    chart.data.datasets[1].data.push(day)
+
+    // forEach((dataset) => {
+    //   dataset.data.push(day)
+    // })
   })
+  console.log("Week hours", weekData)
+  console.log("Week quality", weekQuality)
   chart.update();
 }
 
@@ -251,24 +257,32 @@ function displaySleepInformationPage() {
   addSleepData(mySleepChart);
 }
 
-function updateSleepChart(chart, data) {
-  chart.data.datasets.push(data)
-}
-
 function createSleepChart() {
   mySleepChart = new Chart(sleepChart, {
     data: {
       datasets: [{
         type: 'bar',
-        label: 'Days of the Week',
-        data: []
+        label: 'Hours of Sleep',
+        data: [],
+        backgroundColor: [
+          '#2DA1FA',
+        ],
+        borderColor: [
+          'black',
+        ],
       }, {
-        type: 'line',
+        type: 'bar',
         label: 'Quality of Sleep',
         data: [],
+        backgroundColor: [
+          '#46D4B6',
+        ],
+        borderColor: [
+          'black',
+        ],
 
       }],
-      labels: ["1", "2", "3", "4"]
+      labels: []
     }
   });
 }

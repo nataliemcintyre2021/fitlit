@@ -43,7 +43,7 @@ describe('Sleep Repository', () => {
     ];
 
     let theSleepData = new SleepRepository(sleepData);
-    console.log(theSleepData.userSleepDataId);
+    // console.log(theSleepData.userSleepDataId);
     expect(theSleepData).to.be.an.instanceof(SleepRepository)
   })
 
@@ -223,7 +223,7 @@ describe('Sleep Repository', () => {
 
   let theSleepData = new SleepRepository(sleepData);
   let dailyHours = theSleepData.calculateDailySleptHours("2019/06/15", 3);
-  console.log(theSleepData);
+  // console.log(theSleepData);
   expect(dailyHours).to.equal(18.3)
   })
 
@@ -269,7 +269,7 @@ describe('Sleep Repository', () => {
 
   let theSleepData = new SleepRepository(sleepData);
   let dailyQuality = theSleepData.calculateDailySleepQuality("2019/06/15", 3);
-  console.log(theSleepData);
+  // console.log(theSleepData);
   expect(dailyQuality).to.equal(8.5)
   })
 
@@ -315,7 +315,7 @@ describe('Sleep Repository', () => {
 
   let theSleepData = new SleepRepository(sleepData);
   let allQuality = theSleepData.getAllUserAverageSleepQuality();
-  console.log(theSleepData);
+  // console.log(theSleepData);
   expect(allQuality).to.equal(3.83)
   })
 
@@ -391,7 +391,7 @@ describe('Sleep Repository', () => {
 
   let theSleepData = new SleepRepository(sleepData);
   let weekSleep = theSleepData.getHoursSleptForWeek("2019/06/21", 3);
-  console.log(weekSleep);
+  // console.log(weekSleep);
   expect(weekSleep).to.deep.equal([10.8, 7.5, 7.5, 7.5, 7.5, 7.5, 7.5])
   })
 
@@ -467,11 +467,11 @@ describe('Sleep Repository', () => {
 
   let theSleepData = new SleepRepository(sleepData);
   let weekSleep = theSleepData.getQualitySleepForWeek("2019/06/21", 3);
-  console.log(weekSleep);
+  // console.log(weekSleep);
   expect(weekSleep).to.deep.equal([4.7, 3.8, 3.8, 3.8, 3.8, 3.8, 3.8])
   })
 
-  it('should return sleep quality for week', function() {
+  it('should return days of week', function() {
     let sleepData = [
       {
         "userID": 1,
@@ -542,8 +542,8 @@ describe('Sleep Repository', () => {
     ];
 
   let theSleepData = new SleepRepository(sleepData);
-  let weekSleep = theSleepData.getDaysOfWeek("2019/06/21", 3);
-  console.log(weekSleep);
-  expect(weekSleep).to.deep.equal([4.7, 3.8, 3.8, 3.8, 3.8, 3.8, 3.8])
+  let weekSleep = theSleepData.getDaysSleepForWeek("2019/06/21", 3);
+  // console.log(weekSleep);
+  expect(weekSleep).to.deep.equal(["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"])
   })
 })
