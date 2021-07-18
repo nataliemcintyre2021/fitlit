@@ -39,6 +39,11 @@ describe('Hydration', () => {
       "userID": 1,
       "date": "2019/06/21",
       "numOunces": 94
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/22",
+      "numOunces": 95
     }];
     
     repoData = new Hydration(userData);
@@ -54,7 +59,7 @@ describe('Hydration', () => {
 
   it('should calculate the average ounces per day', () => {
     let sumOunces = repoData.getAverageDailyOunces();
-    expect(sumOunces).to.equal(67);
+    expect(sumOunces).to.equal(70);
   })
 
   it('should return the total ounces for a provided day', () => {
@@ -63,8 +68,14 @@ describe('Hydration', () => {
   });
 
   it('should return the number of ounces per day for a week', () => {
-    let weeklyOunces = repoData.getDailyOuncesForAWeek('2019/06/21');
+    let weeklyOunces = repoData.getDailyOuncesForAWeek('2019/06/21', 'numOunces');
     let allDailyOunces = [37, 75, 47, 85, 42, 87, 94];
     expect(weeklyOunces).to.deep.equal(allDailyOunces);
+  });
+
+  it('should return the dates for a given week', () => {
+    let daysOfWeek = repoData.getDailyOuncesForAWeek('2019/06/22', 'date');
+    let allDailyOunces = ['2019/06/16', '2019/06/17', '2019/06/18', '2019/06/19', '2019/06/20', '2019/06/21', '2019/06/22'];
+    expect(daysOfWeek).to.deep.equal(allDailyOunces);
   });
 })
