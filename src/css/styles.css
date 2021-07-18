@@ -35,6 +35,9 @@ body, html {
   cursor: pointer;
 }
 
+.app-name {
+  font-size: 1.5em;
+}
 /* ~~ Landing Dashboard ~~ */
 
 .dashboard {
@@ -61,6 +64,7 @@ body, html {
 .date {
   font-size: 2vh;
   margin-top: 35px;
+  /* min-height: 6%; */
 }
 
 .fitness-buttons {
@@ -133,7 +137,7 @@ body, html {
   margin-top: 25px;
   border-radius: 20%;
   background: #E3E9F3;
-  font-size: 16px;
+  font-size: 2vh;
   border: 2px solid #2DA1FA;
   color: #2DA1FA;
   cursor: pointer;
@@ -285,6 +289,44 @@ li {
   font-size: 3vh;
 }
 
+/* mobile size */
+@media screen and (max-width: 375px) {
+  .water-chart,
+  .sleep-chart,
+  .steps-chart {
+    height: 90vw;
+    width: 55vh;
+    margin-top: 40px;
+  }
+  .date {
+    min-height: 6%;
+  }
+  .hydration-info,
+  .sleep-info,
+  .activity-info {
+    height: 12vh;
+    width: 22vw;
+  }
+  .oz,
+  .sleep-by-day,
+  .active {
+    font-size: 1.75vh;
+  }
+  .steps-compare {
+    font-size: 2vh;
+  }
+  .user-info {
+    margin-bottom: 2vh;
+  }
+  .sleep-avg-data {
+    margin-bottom: 2vh;
+  }
+  .app-name {
+    font-size: 1em;
+  }
+}
+
+/* hidden */
 .hidden {
   display: none;
 }
