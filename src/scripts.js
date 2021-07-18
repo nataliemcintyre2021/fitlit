@@ -92,6 +92,22 @@ function createNewUser() {
   createHydrationChart();
 }
 
+function random() {
+  return Math.floor(Math.random() * 50)
+}
+
+function displayStepsComparison(repo) {
+  stepComparison.innerText =
+  `Your step goal is ${currentUser.dailyStepGoal}, compared to your
+  fellow users' average goal of ${repo.getAllUserAverageStepGoal()}!`;
+}
+
+function updateCurrentDate() {
+  currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
+  displayDaySleepData();
+  createUserHydration();
+}
+
 function displayDaySleepData() {
   let theSleepData = new SleepRepository(allSleepData);
   let userId = currentUser.id;
@@ -101,12 +117,6 @@ function displayDaySleepData() {
   let currentUserSleepHours = theSleepData.averageHoursOfSleepPerDay(userId);
   sleepQuality.innerText = `Sleep Quality: ${currentUserSleepQuality}`;
   sleepHours.innerText = `Sleep Hours: ${currentUserSleepHours}`;
-}
-
-function updateCurrentDate() {
-  currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
-  displayDaySleepData();
-  createUserHydration();
 }
 
 function createUserHydration() {
@@ -119,16 +129,6 @@ function createUserHydration() {
 function displayUserHydration() {
   hydrationBtnDisplay.innerText =
   `${currentUserHydration.getDailyOunces(currentDate)} oz`;
-}
-
-function random() {
-  return Math.floor(Math.random() * 50)
-}
-
-function displayStepsComparison(repo) {
-  stepComparison.innerText =
-  `Your step goal is ${currentUser.dailyStepGoal}, compared to your
-  fellow users' average goal of ${repo.getAllUserAverageStepGoal()}!`;
 }
 
 function displayUserInformationPage() {
@@ -146,7 +146,7 @@ function displayMainLandingPage() {
 
 function displayHydrationInformationPage() {
   toggleView(hydrationInfoPage, landingPage);
-  removeHydrationData(myHydrationChart);
+  removeChartData(myHydrationChart);
   addHydrationData(myHydrationChart);
 }
 
@@ -173,7 +173,7 @@ function createHydrationChart() {
   });
 }
 
-function removeHydrationData(chart) {
+function removeChartData(chart) {
   for (let i = 0; i < 8; i++) {
     chart.data.labels.pop();
     chart.data.datasets.forEach((dataset) => {
@@ -219,19 +219,9 @@ function addSleepData(chart) {
   chart.update();
 }
 
-function removeSleepData(chart) {
-  for (let i = 0; i < 8; i++) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.pop();
-    });
-  };
-  chart.update();
-}
-
 function displaySleepInformationPage() {
   toggleView(sleepInfoPage, landingPage);
-  removeSleepData(mySleepChart);
+  removeChartData(mySleepChart);
   addSleepData(mySleepChart);
 }
 
