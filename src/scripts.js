@@ -214,9 +214,9 @@ function addHydrationData(chart) {
 function addSleepData(chart) {
   let theSleepData = new SleepRepository(allSleepData);
   let userId = currentUser.id;
-  let weekData = theSleepData.getHoursSleptForWeek(currentDate, userId);
-  let weekLabels = theSleepData.getDaysSleepForWeek(currentDate, userId);
-  let weekQuality = theSleepData.getQualitySleepForWeek(currentDate, userId);
+  let weekData = theSleepData.getWeekData(currentDate, userId, "hoursSlept");
+  let weekLabels = theSleepData.getWeekData(currentDate, userId, "date");
+  let weekQuality = theSleepData.getWeekData(currentDate, userId, "sleepQuality");
 
   weekLabels.forEach(day => {
     let date = dayjs(day).format('MMM DD')
