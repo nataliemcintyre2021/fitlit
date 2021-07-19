@@ -68,17 +68,22 @@ describe('Hydration', () => {
   });
 
   it('should return the number of ounces per day for a week', () => {
-    let weeklyOunces = repoData.getDailyOuncesForAWeek('2019/06/21', 'numOunces');
+    let weeklyOunces = 
+      repoData.getDailyOuncesForAWeek('2019/06/21', 'numOunces');
     let allDailyOunces = [37, 75, 47, 85, 42, 87, 94];
     expect(weeklyOunces).to.deep.equal(allDailyOunces);
   });
 
-
-
-
   it('should return the dates for a given week', () => {
     let daysOfWeek = repoData.getDailyOuncesForAWeek('2019/06/22', 'date');
-    let allDailyOunces = ['2019/06/16', '2019/06/17', '2019/06/18', '2019/06/19', '2019/06/20', '2019/06/21', '2019/06/22'];
+    let allDailyOunces = 
+      ['2019/06/16', 
+        '2019/06/17', 
+        '2019/06/18', 
+        '2019/06/19', 
+        '2019/06/20', 
+        '2019/06/21', 
+        '2019/06/22'];
     expect(daysOfWeek).to.deep.equal(allDailyOunces);
   });
 })

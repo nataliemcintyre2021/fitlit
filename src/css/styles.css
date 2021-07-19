@@ -10,7 +10,6 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
-
 body, html {
   height: 100%;
   width: 100%;
@@ -24,20 +23,21 @@ body, html {
   height: 10vh;
 }
 
+.fit-logo {
+  margin: 10px;
+  cursor: pointer;
+}
+
 .logo-img {
   height: 5vh;
   width: 5vh;
   padding: 2px;
 }
 
-.fit-logo {
-  margin: 10px;
-  cursor: pointer;
-}
-
 .app-name {
   font-size: 1.5em;
 }
+
 /* ~~ Landing Dashboard ~~ */
 
 .dashboard {
@@ -64,7 +64,6 @@ body, html {
 .date {
   font-size: 2vh;
   margin-top: 35px;
-  /* min-height: 6%; */
 }
 
 .fitness-buttons {
@@ -75,58 +74,49 @@ body, html {
   margin: 5px;
 }
 
+.hydration-info,
+.sleep-info,
+.activity-info {
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+  border: none;
+  box-shadow: 4px 6px 6px #7D7D7D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 .hydration-info {
-  border-radius: 50%;
-  height: 15vh;
-  width: 15vh;
   background-color: #2DA1FA;
-  border: none;
-  box-shadow: 4px 6px 6px #7D7D7D;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 }
 
-.sleep-info {
-  border-radius: 50%;
-  height: 15vh;
-  width: 15vh;
+.sleep-info { 
   background-color: #41CBDB;
-  border: none;
-  box-shadow: 4px 6px 6px #7D7D7D;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 }
 
-.sleep-image,
+.activity-info { 
+  background-color: #46D4B6;
+}
+
 .hydration-image,
+.sleep-image,
 .activity-image {
   height: 4vh;
   width: 4vh;
   margin: 8px;
 }
 
-.activity-info {
-  border-radius: 50%;
-  height: 15vh;
-  width: 15vh;
-  background-color: #46D4B6;
-  border: none;
-  box-shadow: 4px 6px 6px #7D7D7D;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.oz,
+.sleep-by-day,
+.active {
+  font-size: 1.75vh;
 }
 
-.sleep-info:hover,
 .hydration-info:hover,
+.sleep-info:hover,
 .activity-info:hover {
   box-shadow: -4px -6px 6px #7D7D7D;
 }
@@ -149,24 +139,29 @@ body, html {
   background: #2DA1FA;
 }
 
-/* ~~ Hydration Dashboard ~~ */
+/* ~~ Hydration, Sleep, Activity Dashboards ~~ */
 
-.hydration {
+.hydration,
+.sleep,
+.activity {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 90vh;
 }
 
-.hydration-heading {
+.hydration-heading,
+.sleep-header,
+.activity-header {
   font-size: 6vh;
-  color: #2DA1FA;
   margin: 20px;
 }
 
-.waterdrop {
-  height: 6vh;
-  width: 6vh;
+.waterdrop,
+.moon,
+.footsteps {
+  height: 4em;
+  width: 4em;
 }
 
 .water-chart,
@@ -177,29 +172,12 @@ body, html {
   margin-top: 40px;
 }
 
-/* .hydro-chart {
-  height: 100%;
-  width: 100%;
-} */
-
-/* ~~ Sleep Dashboard ~~ */
-
-.sleep {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 90vh;
+.hydration-heading {
+  color: #2DA1FA;
 }
 
 .sleep-header {
-  font-size: 6vh;
   color: #41CBDB;
-  margin: 20px;
-}
-
-.moon {
-  height: 4em;
-  width: 4em;
 }
 
 .sleep-averages {
@@ -211,7 +189,6 @@ body, html {
 .sleep-avg-data {
   display: flex;
   font-size: 2vh;
-
 }
 
 .sleep-quality,
@@ -219,7 +196,6 @@ body, html {
   margin: 0px 20px;
 }
 
-/* ~~ Activity Dashboard ~~ */
 .activity {
   display: flex;
   flex-direction: column;
@@ -228,14 +204,7 @@ body, html {
 }
 
 .activity-header {
-  font-size: 6vh;
   color: #46D4B6;
-  margin: 20px;
-}
-
-.footsteps {
-  height: 6vh;
-  width: 6vw;
 }
 
 .activity-btns {
@@ -259,7 +228,6 @@ body, html {
 .activity-compare {
   font-size: 2vh;
 }
-
 
 /* ~~ User Information ~~ */
 
@@ -291,6 +259,29 @@ li {
 
 /* mobile size */
 @media screen and (max-width: 375px) {
+  .app-name {
+    font-size: 1em;
+  }
+  
+  .date {
+    min-height: 6%;
+  }
+  
+  .hydration-info,
+  .sleep-info,
+  .activity-info {
+    height: 12vh;
+    width: 22vw;
+  }
+
+  .steps-compare {
+    font-size: 2vh;
+  }
+
+  .user-info {
+    margin-bottom: 2vh;
+  }
+
   .water-chart,
   .sleep-chart,
   .steps-chart {
@@ -298,31 +289,16 @@ li {
     width: 55vh;
     margin-top: 40px;
   }
-  .date {
-    min-height: 6%;
-  }
-  .hydration-info,
-  .sleep-info,
-  .activity-info {
-    height: 12vh;
-    width: 22vw;
-  }
-  .oz,
-  .sleep-by-day,
-  .active {
-    font-size: 1.75vh;
-  }
-  .steps-compare {
-    font-size: 2vh;
-  }
-  .user-info {
-    margin-bottom: 2vh;
-  }
+
   .sleep-avg-data {
     margin-bottom: 2vh;
   }
-  .app-name {
-    font-size: 1em;
+
+  .activity-btns {
+    height: 7vh;
+    width: 18vw;
+    margin: 20px; 
+    font-size: 2vh;  
   }
 }
 

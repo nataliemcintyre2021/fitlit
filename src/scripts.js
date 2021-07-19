@@ -1,6 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 import './css/styles.css';
 import './images/PngItem_311075.png';
 import './images/user.png';
@@ -10,14 +7,13 @@ import './images/footprints.png';
 import './images/flame.png';
 import UserRepository from './UserRepository';
 import User from './User';
-// import Sleep from './Sleep';
 import SleepRepository from './SleepRepository';
 import Hydration from './Hydration';
 import HydrationRepository from './HydrationRepository';
-import {getUserData, getSleepData, getActivityData, getHydrationData} from './apiCalls';
+import {getUserData, getSleepData, 
+  getActivityData, getHydrationData} from './apiCalls';
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
-
 
 //query selectors
 const userWelcome = document.getElementById('user-welcome');
@@ -51,7 +47,6 @@ const userStrideLengthInfo = document.getElementById('stride-length');
 const userStepGoalInfo = document.getElementById('step-goal');
 const userFriendsInfo = document.getElementById('your-friends');
 
-
 //global variable
 let currentUser;
 let currentDate;
@@ -62,8 +57,7 @@ let allActivityData = [];
 let currentUserHydration;
 let myHydrationChart;
 let mySleepChart;
-
-
+let myActivityChart;
 
 //event listeners
 window.addEventListener('load', fetchUserData);
@@ -73,12 +67,11 @@ hydrationBtn.addEventListener('click', displayHydrationInformationPage);
 sleepBtn.addEventListener('click', displaySleepInformationPage);
 activityBtn.addEventListener('click', displayActivityInformationPage);
 date.addEventListener('change', updateCurrentDate);
-// console.log((dayjs(date.value).format('YYYY/MM/DD')) === allSleepData[3].date)
-
 
 //functions
 function fetchUserData() {
-  Promise.all([getUserData(), getSleepData(), getActivityData(), getHydrationData()])
+  Promise.all([getUserData(), getSleepData(), 
+    getActivityData(), getHydrationData()])
     .then(values => parseValues(values))
 }
 
@@ -100,24 +93,35 @@ function createNewUser() {
   displayDaySleepData();
   createSleepChart();
   createHydrationChart();
+  createActivityChart();
 }
 
-function displayDaySleepData() {
-  let theSleepData = new SleepRepository(allSleepData);
-  let userId = currentUser.id;
-  let currentUserSleepData = theSleepData.calculateDailySleptHours(currentDate, userId)
-  sleepArea.innerText = `${currentUserSleepData} hours`;
-  let currentUserSleepQuality = theSleepData.averageSleepQualityPerDay(userId);
-  let currentUserSleepHours = theSleepData.averageHoursOfSleepPerDay(userId);
-  sleepQuality.innerText = `Sleep Quality: ${currentUserSleepQuality}`;
-  sleepHours.innerText = `Sleep Hours: ${currentUserSleepHours}`;
+function random() {
+  return Math.floor(Math.random() * 50)
+}
+
+function displayStepsComparison(repo) {
+  stepComparison.innerText =
+  `Your step goal is ${currentUser.dailyStepGoal}, compared to your
+  fellow users' average goal of ${repo.getAllUserAverageStepGoal()}!`;
 }
 
 function updateCurrentDate() {
   currentDate = (dayjs(date.value).format('YYYY/MM/DD'));
   displayDaySleepData();
-  console.log(currentDate);
   createUserHydration();
+}
+
+function displayDaySleepData() {
+  let theSleepData = new SleepRepository(allSleepData);
+  let userId = currentUser.id;
+  let currentUserSleepData = 
+    theSleepData.calculateDailySleptHours(currentDate, userId);
+  sleepArea.innerText = `${currentUserSleepData} hours`;
+  let currentUserSleepQuality = theSleepData.averageSleepQualityPerDay(userId);
+  let currentUserSleepHours = theSleepData.averageHoursOfSleepPerDay(userId);
+  sleepQuality.innerText = `Sleep Quality: ${currentUserSleepQuality}`;
+  sleepHours.innerText = `Sleep Hours: ${currentUserSleepHours}`;
 }
 
 function createUserHydration() {
@@ -130,16 +134,6 @@ function createUserHydration() {
 function displayUserHydration() {
   hydrationBtnDisplay.innerText =
   `${currentUserHydration.getDailyOunces(currentDate)} oz`;
-}
-
-function random() {
-  return Math.floor(Math.random() * 50)
-}
-
-function displayStepsComparison(repo) {
-  stepComparison.innerText =
-  `Your step goal is ${currentUser.dailyStepGoal}, compared to your
-  fellow users' average goal of ${repo.getAllUserAverageStepGoal()}!`;
 }
 
 function displayUserInformationPage() {
@@ -157,7 +151,7 @@ function displayMainLandingPage() {
 
 function displayHydrationInformationPage() {
   toggleView(hydrationInfoPage, landingPage);
-  removeHydrationData(myHydrationChart);
+  removeChartData(myHydrationChart);
   addHydrationData(myHydrationChart);
 }
 
@@ -180,24 +174,25 @@ function createHydrationChart() {
       }]
     },
     options: {
-
     }
   });
 }
 
-function removeHydrationData(chart) {
+function removeChartData(chart) {
   for (let i = 0; i < 8; i++) {
     chart.data.labels.pop();
     chart.data.datasets.forEach((dataset) => {
       dataset.data.pop();
     });
-  };
+  }
   chart.update();
 }
 
 function addHydrationData(chart) {
-  let weekData = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'numOunces');
-  let weekLabels = currentUserHydration.getDailyOuncesForAWeek(currentDate, 'date');
+  let weekData = 
+    currentUserHydration.getDailyOuncesForAWeek(currentDate, 'numOunces');
+  let weekLabels = 
+    currentUserHydration.getDailyOuncesForAWeek(currentDate, 'date');
 
   weekLabels.forEach(day => {
     let date = dayjs(day).format('MMM DD')
@@ -224,36 +219,16 @@ function addSleepData(chart) {
   });
   weekData.forEach(day => {
     chart.data.datasets[0].data.push(day)
-
-    // forEach((dataset) => {
-    //   dataset.data.push(day);
-    // })
   })
   weekQuality.forEach(day => {
     chart.data.datasets[1].data.push(day)
-
-    // forEach((dataset) => {
-    //   dataset.data.push(day)
-    // })
-  })
-  console.log("Week hours", weekData)
-  console.log("Week quality", weekQuality)
-  chart.update();
-}
-
-function removeSleepData(chart) {
-  for (let i = 0; i < 8; i++) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.pop();
-    });
-  };
+  }) 
   chart.update();
 }
 
 function displaySleepInformationPage() {
   toggleView(sleepInfoPage, landingPage);
-  removeSleepData(mySleepChart);
+  removeChartData(mySleepChart);
   addSleepData(mySleepChart);
 }
 
@@ -289,11 +264,11 @@ function createSleepChart() {
 
 function displayActivityInformationPage() {
   toggleView(activityInfoPage, landingPage);
-  displayActivityChart();
+  createActivityChart();
 }
 
-function displayActivityChart() {
-  var myStepsChart = new Chart(activityChart, {
+function createActivityChart() {
+  myActivityChart = new Chart(activityChart, {
     type: 'bar',
     data: {
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
