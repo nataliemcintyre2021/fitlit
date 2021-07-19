@@ -21,7 +21,7 @@ describe('User', () => {
           8
         ]
       });
-      expect(user1).to.be.an.instanceof(User);
+    expect(user1).to.be.an.instanceof(User);
   })
 
   it('should return a user first name only', function () {
