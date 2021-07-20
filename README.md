@@ -1,82 +1,69 @@
-# FitLit Starter Kit
+# Title
+Module 2 Paired Project - Fitlit
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+## Table of Contents
+  - [Abstract](#abstract)
+  - [Technologies](#technologies)
+  - [Code Architecture](#code-architecture)
+  - [Illustrations](#illustrations)
+  - [Install + Setup](#set-up)
+  - [Contributors](#contributors)
+	- [Wins](#wins)
+	- [Challenges + Improvements](#challenges-+-Improvements)
+  - [Project Specs](#project-specs)
 
-## Setup
+## Abstract
+	This project emphasized a variety of learning goals and new technologies that have been introduced in module 2, including the implementation of TDD, array prototype methods, responsive design, best practices for UX/UI, and utilizing network requests to name a few. The overall goal was to use these new concepts to design and build a useful fitness tracker dashboard.
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+## Technologies
+  - Javascript
+  - HTML
+  - CSS
+  - eslint
+  - node
+  - Atom
+	- WebPack
+	- API
+  - Mocha
+  - Chai
+  - Chart.js
+  - Day.js
 
-## Testing
+## How to Use Application
+  This application provides the user with immediate data into their fitness journey from the first view in the dashboard. On main dashboard, keeping the user experience in mind, user will find a straight-forward, easy-to-read breakdown of their fitness for a specific day. Here they will see, in widgets, their hydration (number of ounces drank), sleep (number of hours slept), and activity (steps taken - this will be displayed in future extensions of application). Below the widgets, they will see how their step goal compares to all users' goals for that particular day.
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+  Upon selection of a widget, the user will be able to see their full weeks' information for that category. For the hydration category, user can see an easy to read chart that includes the number of ounces they have drank each day of that week. For the sleep category, user can see an easy to read chart displaying both hours slept and quality of sleep for any given day that week. They can also see their all-time averages for both sleep quality and sleep hours. To view all the user's personal information, including their step goal and friends, they can click the user information button. It is by clicking on the Fitlit icon in the upper right corner that the user can navigate back to the main dashboard from each view. The date the user would like to see can be selected from the main dashboard. By clicking on the date drop-down menu, user can select a date, which will update the information seen on the main dashboard widgets and information seen on each view of the application.
 
-## Linting Your Code
+## Illustrations
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+![Fitlit](https://user-images.githubusercontent.com/78229679/126386692-bd8340df-84e1-426a-810e-49cabbc27d25.gif)
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+## Install + Setup
+- Clone down this 3rd party repository git clone https://github.com/turingschool-examples/fitlit-api
+This API holds the data our project will fetch in order to populate the browser with info
+- CD into your local directory and clone cd fitlit-api
+- Install project dependencies npm install
+- Run npm start
+- Clone down this repository git clone https://github.com/nataliemcintyre2021/fitlit
+- CD into your local directory and clone cd fitlit
+- Install project dependencies npm install
+- Run npm start and open localhost:8080 in your preferred browser
 
-## Data Model
+## Contributors
+  - [Megan McBride](https://github.com/Meggs625)
+  - [Natalie McIntyre](https://github.com/nataliemcintyre2021)
 
-**Users**
+## Wins
+	- Wiring framing and planning stage provided nice design plan to guide final project
+	- Revisited learning goals for each iteration and focused on prioritizing those in project network
+  - Functionality is as expected
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+## Challenges + Improvements
+	- Method for fetching API data could be improved on
+    - Because of use of Promise.all, if all data is not successfully fetched and returned then functionality is lost but will be reprocessed upon refresh
+  - Seeking to do more research in utilizing different packages, such as Chart.js, Date.js, and others that would benefit user experience
+	- Continuing to improve on learning goals such as more understanding of class to class interaction, fetching data, and writing more modular code that follows SRP
+	- Future iterations include building out activity classes and functionality
 
-**Activity**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+## Project Specs
+  - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/fitlit.html)

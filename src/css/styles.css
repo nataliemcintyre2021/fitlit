@@ -93,11 +93,11 @@ body, html {
   background-color: #2DA1FA;
 }
 
-.sleep-info { 
+.sleep-info {
   background-color: #41CBDB;
 }
 
-.activity-info { 
+.activity-info {
   background-color: #46D4B6;
 }
 
@@ -258,15 +258,15 @@ li {
 }
 
 /* mobile size */
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 425px) {
   .app-name {
     font-size: 1em;
   }
-  
+
   .date {
     min-height: 6%;
   }
-  
+
   .hydration-info,
   .sleep-info,
   .activity-info {
@@ -297,8 +297,8 @@ li {
   .activity-btns {
     height: 7vh;
     width: 18vw;
-    margin: 20px; 
-    font-size: 2vh;  
+    margin: 20px;
+    font-size: 2vh;
   }
 }
 
