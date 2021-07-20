@@ -8,12 +8,13 @@ Module 2 Paired Project - Fitlit
   - [Illustrations](#illustrations)
   - [Install + Setup](#set-up)
   - [Contributors](#contributors)
-	- [Wins](#wins)
-	- [Challenges + Improvements](#challenges-+-Improvements)
+  - [Wins](#wins)
+  - [Challenges + Improvements](#challenges-+-Improvements)
   - [Project Specs](#project-specs)
 
 ## Abstract
-	This project emphasized a variety of learning goals and new technologies that have been introduced in module 2, including the implementation of TDD, array prototype methods, responsive design, best practices for UX/UI, and utilizing network requests to name a few. The overall goal was to use these new concepts to design and build a useful fitness tracker dashboard.
+
+This project emphasized a variety of learning goals and new technologies that have been introduced in module 2, including the implementation of TDD, array prototype methods, responsive design, best practices for UX/UI, and utilizing network requests to name a few. The overall goal was to use these new concepts to design and build a useful fitness tracker dashboard.
 
 ## Technologies
   - Javascript
@@ -22,8 +23,8 @@ Module 2 Paired Project - Fitlit
   - eslint
   - node
   - Atom
-	- WebPack
-	- API
+  - WebPack
+  - API
   - Mocha
   - Chai
   - Chart.js
@@ -54,16 +55,16 @@ This API holds the data our project will fetch in order to populate the browser 
   - [Natalie McIntyre](https://github.com/nataliemcintyre2021)
 
 ## Wins
-	- Wiring framing and planning stage provided nice design plan to guide final project
-	- Revisited learning goals for each iteration and focused on prioritizing those in project network
-  - Functionality is as expected
+- Wiring framing and planning stage provided nice design plan to guide final project
+- Revisited learning goals for each iteration and focused on prioritizing those in project network
+- Functionality is as expected
 
 ## Challenges + Improvements
-	- Method for fetching API data could be improved on
-    - Because of use of Promise.all, if all data is not successfully fetched and returned then functionality is lost but will be reprocessed upon refresh
-  - Seeking to do more research in utilizing different packages, such as Chart.js, Date.js, and others that would benefit user experience
-	- Continuing to improve on learning goals such as more understanding of class to class interaction, fetching data, and writing more modular code that follows SRP
-	- Future iterations include building out activity classes and functionality
+- Method for fetching API data could be improved on
+- Because of use of Promise.all, if all data is not successfully fetched and returned then functionality is lost but will be reprocessed upon refresh
+- Seeking to do more research in utilizing different packages, such as Chart.js, Date.js, and others that would benefit user experience
+- Continuing to improve on learning goals such as more understanding of class to class interaction, fetching data, and writing more modular code that follows SRP
+- Future iterations include building out activity classes and functionality
 
 ## Project Specs
   - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/fitlit.html)
