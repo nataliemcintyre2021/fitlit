@@ -1,5 +1,5 @@
-# Title
-Module 2 Paired Project - Fitlit
+# Module 2 Paired Project - Fitlit
+
 
 ## Table of Contents
   - [Abstract](#abstract)
